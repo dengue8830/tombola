@@ -72,88 +72,18 @@
 	</div><!-- /header -->
 
 	<div class="ui-content" role="main">
-		<div id="tablas">
-		<table width="180" border="0" cellspacing="0" cellpadding="0" style="layout: fixed">
-	<tbody>
-		<tr>
-			<td class="lot_No">Nº</td>
-			<td colspan="4" bgcolor="#9E473D" class="lot_tit">MATUTINA<br>JUJUY (11,30 Hs.)</td>
-		</tr>
-		<tr>
-			<td colspan="4" height="4"><img src="images/4x4pix.gif" width="4" height="4"></td>
-		</tr>
-		<tr>
-			<td bgcolor="#9E473D" class="lot_n1">1</td>
-			<td class="lot_dat0">0306</td>
-			<td width="4">&nbsp;</td>
-			<td class="lot_nyl">11</td>
-			<td class="lot_dat0">3301</td>
-		</tr>
-		<tr>
-			<td class="lot_nyl">2</td>
-			<td class="lot_dat1">7215</td>
-			<td width="4">&nbsp;</td>
-			<td class="lot_nyl">12</td>
-			<td class="lot_dat1">7211</td>
-		</tr>
-		<tr>
-			<td class="lot_nyl">3</td>
-			<td class="lot_dat0">8743</td>
-			<td width="4">&nbsp;</td>
-			<td class="lot_nyl">13</td>
-			<td class="lot_dat0">2973</td>
-		</tr>
-		<tr>
-			<td class="lot_nyl">4</td>
-			<td class="lot_dat1">2433</td>
-			<td width="4">&nbsp;</td>
-			<td class="lot_nyl">14</td>
-			<td class="lot_dat1">2858</td>
-		</tr>
-		<tr>
-			<td class="lot_nyl">5</td>
-			<td class="lot_dat0">2990</td>
-			<td width="4">&nbsp;</td>
-			<td class="lot_nyl">15</td>
-			<td class="lot_dat0">0126</td>
-		</tr>
-		<tr>
-			<td class="lot_nyl">6</td>
-			<td class="lot_dat1">6615</td>
-			<td width="4">&nbsp;</td>
-			<td class="lot_nyl">16</td>
-			<td class="lot_dat1">0439</td>
-		</tr>
-		<tr>
-			<td class="lot_nyl">7</td>
-			<td class="lot_dat0">9935</td>
-			<td width="4">&nbsp;</td>
-			<td class="lot_nyl">17</td>
-			<td class="lot_dat0">7891</td>
-		</tr>
-		<tr>
-			<td class="lot_nyl">8</td>
-			<td class="lot_dat1">9457</td>
-			<td width="4">&nbsp;</td>
-			<td class="lot_nyl">18</td>
-			<td class="lot_dat1">8077</td>
-		</tr>
-		<tr>
-			<td class="lot_nyl">9</td>
-			<td class="lot_dat0">2298</td>
-			<td width="4">&nbsp;</td>
-			<td class="lot_nyl">19</td>
-			<td class="lot_dat0">8404</td>
-		</tr>
-		<tr>
-			<td class="lot_nyl">10</td>
-			<td class="lot_dat1">5653</td>
-			<td width="4">&nbsp;</td>
-			<td class="lot_nyl">20</td>
-			<td class="lot_dat1">6152</td>
-		</tr>
-	</tbody>
-</table>
+		<div id="tablas_1" style = "margin-top:45px" align="center">
+		
+		</div>
+
+		<div id="tablas_2" style = "margin-top:45px" align="center">
+		
+		</div>
+		<div id="tablas_3" style = "margin-top:45px" align="center">
+		
+		</div>
+		<div id="tablas_4" style = "margin-top:45px" align="center">
+		
 		</div>
 	</div>
 
@@ -161,9 +91,20 @@
 
 	</div><!-- /page -->
 
+<script src="js/model/vo/sorteoVO.js"></script>
+
+<script src="js/utils/utils.js"></script>
+
 <script src="js/controller/paginaController.js"></script>
+<script src="js/businesslogic/tombolaService.js"></script>
 <script type="text/javascript">
-	paginaController_pintarSorteos();
+	var tablas = new Array();
+	tablas.push($('#tablas_1'));
+	tablas.push($('#tablas_2'));
+	tablas.push($('#tablas_3'));
+	tablas.push($('#tablas_4'));
+
+	paginaController_pintarSorteos(tablas);
 </script>
 </body>
 </html>

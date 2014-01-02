@@ -4,7 +4,7 @@ function SorteoVO(id, nombre, numero, fecha, lugar, numeros){
 	this.numero = numero;
 	this.fecha = fecha;
 	this.hora = function(){
-		return this.fecha.getHours()+":"+this.fecha.getMinutes()+":"+this.fecha.getSeconds(); 
+		return this.fecha.getHours()+":"+this.fecha.getMinutes(); 
 	}
 	this.lugar = lugar;
 	this.numeros = numeros;
