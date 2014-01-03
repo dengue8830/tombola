@@ -5,6 +5,7 @@ function paginaController_pintarSorteos(array){
 		var element = array[i];
 		var unSorteo = sorteosVos[i];
 
+		element.append('<h3>'+unSorteo.nombre+' - '+unSorteo.lugar+'</h3>');
         element.append('<table width="180" border="0" cellspacing="0" cellpadding="0" style="layout: fixed">'
 	+'<tbody>'
 		+'<tr>'

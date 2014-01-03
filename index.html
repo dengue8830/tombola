@@ -56,40 +56,46 @@
 	</style>
 </head>
 <body>
-<div data-role="page" id="testpage">
+<div data-role="page" data-theme="a" >
+	<!-- cabecera -->
+	<div data-role="header" data-theme="a" >
+		<h3> Tombola Jujeña</h3>
 
-	<div data-role="header">
-		<h1>Tablas</h1>
-		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left ui-btn-icon-notext">Back</a>
+		<a href="#" class="ui-btn ui-icon-search ui-btn-icon-notext ui-corner-all" data-role="button">Buscar</a>
+		<a href="#" class="ui-btn ui-icon-cloud ui-btn-icon-notext ui-corner-all" data-theme="b">Buscar</a>
+	<div data-role="navbar"></div>			
+				
+				
+	</div>
+	<!-- content -->
+	<div data-role="content">
 		
-		<div data-role="navbar">
-			<ul>
-				<li><a href="#" class="ui-btn-active ui-state-persist">Menu item 1</a></li>
-				<li><a href="#">Menu item 2</a></li>
-				<li><a href="#">Menu item 3</a></li>
-			</ul>
-		</div>
-	</div><!-- /header -->
-
-	<div class="ui-content" role="main">
-		<div id="tablas_1" style = "margin-top:45px" align="center">
-		
-		</div>
-
-		<div id="tablas_2" style = "margin-top:45px" align="center">
-		
-		</div>
-		<div id="tablas_3" style = "margin-top:45px" align="center">
-		
-		</div>
-		<div id="tablas_4" style = "margin-top:45px" align="center">
-		
+		<div data-role="collapsible-set" data-content-theme="a">
+			<div data-role="collapsible" id="tablas_1">
+				
+			</div>
+			<div data-role="collapsible" id="tablas_2">
+				
+			</div>
+			<div data-role="collapsible" id="tablas_3">
+				
+			</div>
+			<div data-role="collapsible" id="tablas_4">
+				
+			</div>
 		</div>
 	</div>
-
+	<!-- footer -->
+	<div data-role="footer" data-position="fixed">
 		
-
-	</div><!-- /page -->
+		<!-- <div data-role="controlgroup" data-type="horizontal"> -->
+			<a href="#" data-role="button" class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" ></a>
+			<a href="#" data-role="button" data-icon="calendar" id="calendario"></a>
+			<a href="#" data-role="button" class="ui-btn ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" ></a>
+		<!-- </div> -->
+			
+	</div>
+</div>
 
 <script src="js/model/vo/sorteoVO.js"></script>
 
@@ -98,6 +104,9 @@
 <script src="js/controller/paginaController.js"></script>
 <script src="js/businesslogic/tombolaService.js"></script>
 <script type="text/javascript">
+	var fechaHoy = new Date();
+	$('#calendario').text(fechaUtils_format(fechaHoy, '/,dd-mm-yyyy'));
+
 	var tablas = new Array();
 	tablas.push($('#tablas_1'));
 	tablas.push($('#tablas_2'));
