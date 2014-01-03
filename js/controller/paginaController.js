@@ -1,9 +1,9 @@
-function paginaController_pintarSorteos(array){
-	var sorteosVos = tombolaService_getSorteosDiezDias();
+function controller_mostrarSorteos_pintarSorteos(arrayDivs, arraySorteosVos){
+	//var arraySorteosVos = tombolaService_getSorteosDiezDias();
 
-	for (var i = 0; i < array.length; i++) {
-		var element = array[i];
-		var unSorteo = sorteosVos[i];
+	for (var i = 0; i < arrayDivs.length; i++) {
+		var element = arrayDivs[i];
+		var unSorteo = arraySorteosVos[i];
 
 		element.append('<h3>'+unSorteo.nombre+' - '+unSorteo.lugar+'</h3>');
         element.append('<table width="180" border="0" cellspacing="0" cellpadding="0" style="layout: fixed">'
@@ -175,3 +175,22 @@ function paginaController_pintarSorteos(array){
 		+'</tr>'
 	+'</tbody>'
 +'</table>');*/
+
+function controller_mostrarSorteos_modificarFecha(nuevaFecha){
+	console.log('aqui');
+	if(nuevaFecha instanceof Date){
+		fecha = nuevaFecha;
+	}else{
+		if(nuevaFecha == 'mas'){
+			fecha.setDate(fecha.getDate()+1);
+		}else{
+			fecha.setDate(fecha.getDate()-1);
+		}
+	}
+	//fecha.setDate(fecha.getDate()-1);
+	$('#calendario').text(fechaUtils_format(fecha, '/,dd-mm-yyyy'));
+
+	var sorteos = tombolaService_getSorteosByFecha(fecha);
+	controller_mostrarSorteos_pintarSorteos(arrayDivsTablas, sorteos);
+
+}
