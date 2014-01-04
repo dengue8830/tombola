@@ -7,19 +7,19 @@ function tombolaService_getSorteosDiezDias(fechaSorteo){
 	var otroTemp = 3694;
 
 	for (var i = 0; i < 10; i++) {
-		var sorteoUno = new SorteoVO(temp++, "Matutina", otroTemp, fechaTemp, 'Jujuy', numeros);
+		var sorteoUno = new SorteoVO(temp++, "La Primera", otroTemp, fechaTemp, 'Jujuy', numeros);
 		sorteosVOs.push(sorteoUno);
 
 		otroTemp += 100;
-		var sorteoDos = new SorteoVO(temp++, "Vespertina", otroTemp, fechaTemp, 'Salta', numeros);
+		var sorteoDos = new SorteoVO(temp++, "Matutina", otroTemp, fechaTemp, 'Salta', numeros);
 		sorteosVOs.push(sorteoDos);
 
 		otroTemp += 100;
-		var sorteoTres = new SorteoVO(temp++, "Tres", otroTemp, fechaTemp, 'Tucuman', numeros);
+		var sorteoTres = new SorteoVO(temp++, "Vespertina", otroTemp, fechaTemp, 'Tucuman', numeros);
 		sorteosVOs.push(sorteoTres);
 
 		otroTemp += 100;
-		var sorteoCuatro = new SorteoVO(temp++, "Cuatro", otroTemp, fechaTemp, 'Cordoba', numeros);
+		var sorteoCuatro = new SorteoVO(temp++, "Nocturna", otroTemp, fechaTemp, 'Cordoba', numeros);
 		sorteosVOs.push(sorteoCuatro);
 
 		otroTemp += 100;
@@ -43,6 +43,6 @@ function tombolaService_getSorteosByFecha(fechaSorteo){
 			values.push(unSorteo);
 		}
 	}
-console.log(values);
+
 	return values;
 }
