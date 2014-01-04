@@ -1,10 +1,10 @@
-<?xml version='1.0' encoding='utf-8'?>
+    <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.changos.tombola" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Tombola</name>
     <description>
         Aplacion Tobola que muestras los resultados del los sorteos
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
+    <author email="changosoft@gmail.com" href="http://changosoft.com">
         Tombola Team
         David Rearte        @dengue8830
         Jorge Riera         @nigrobyte
