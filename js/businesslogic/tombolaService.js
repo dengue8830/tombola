@@ -33,16 +33,16 @@ function tombolaService_getSorteosDiezDias(fechaSorteo){
 }
 
 function tombolaService_getSorteosByFecha(fechaSorteo){
-	console.log('ahora aqui');
+
 	var sorteosVOs = tombolaService_getSorteosDiezDias(fechaSorteo);
 	var values = new Array();
 
-	for (var i = 0; i < sorteosVOs.length; i++) {
+	for (var i = 0; i < 4; i++) {
 		var unSorteo = sorteosVOs[i];
 		if(fechaSorteo.getDate == unSorteo.fecha.getDate && fechaSorteo.getMonth == unSorteo.fecha.getMonth && fechaSorteo.getYear == unSorteo.fecha.getYear){
 			values.push(unSorteo);
 		}
 	}
-
+console.log(values);
 	return values;
 }
