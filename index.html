@@ -56,7 +56,7 @@
 	</style>
 </head>
 <body>
-<div data-role="page" data-theme="a" >
+<div data-role="page" data-theme="a" id="page">
 	<!-- cabecera -->
 	<div data-role="header" data-theme="a" >
 		<h3> Tombola Jujeña</h3>
@@ -68,30 +68,38 @@
 				
 	</div>
 	<!-- content -->
-	<div data-role="content">
+	<div data-role="content" id="contenedor">
 		
-		<div data-role="collapsible-set" data-content-theme="a">
-			<div data-role="collapsible" id="tablas_1">
+		<div data-role="collapsible-set" data-content-theme="a" id="acordion">
+			
+				<div data-role="collapsible"  id="tablas_1">
+
 				
-			</div>
+				</div>
+
+			
 			<div data-role="collapsible" id="tablas_2">
+
 				
 			</div>
+
 			<div data-role="collapsible" id="tablas_3">
 				
 			</div>
+
 			<div data-role="collapsible" id="tablas_4">
 				
 			</div>
+
 		</div>
 	</div>
 	<!-- footer -->
 	<div data-role="footer" data-position="fixed">
 		
 		<!-- <div data-role="controlgroup" data-type="horizontal"> -->
-			<a href="#" data-role="button" class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" ></a>
+			<a href="#" data-role="button" class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" id="restar_dia" onclick="controller_mostrarSorteos_modificarFecha('menos');"></a>
 			<a href="#" data-role="button" data-icon="calendar" id="calendario"></a>
-			<a href="#" data-role="button" class="ui-btn ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" ></a>
+			<a href="#" data-role="button" class="ui-btn ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" id="aumentar_dia" onclick="controller_mostrarSorteos_modificarFecha('mas');"></a>
 		<!-- </div> -->
 			
 	</div>
@@ -104,16 +112,19 @@
 <script src="js/controller/paginaController.js"></script>
 <script src="js/businesslogic/tombolaService.js"></script>
 <script type="text/javascript">
-	var fechaHoy = new Date();
-	$('#calendario').text(fechaUtils_format(fechaHoy, '/,dd-mm-yyyy'));
+	var fecha = new Date();
+	//$('#calendario').text(fechaUtils_format(fecha, '/,dd-mm-yyyy'));
 
-	var tablas = new Array();
-	tablas.push($('#tablas_1'));
-	tablas.push($('#tablas_2'));
-	tablas.push($('#tablas_3'));
-	tablas.push($('#tablas_4'));
+	var arrayDivsTablas = new Array();
+	arrayDivsTablas.push($('#tablas_1'));
+	arrayDivsTablas.push($('#tablas_2'));
+	arrayDivsTablas.push($('#tablas_3'));
+	arrayDivsTablas.push($('#tablas_4'));
 
-	paginaController_pintarSorteos(tablas);
+	controller_mostrarSorteos_modificarFecha(fecha);
+
+	//paginaController_pintarSorteos(divsTablas);
+	//controller_mostrarSorteos_pintarSorteos(arrayDivsTablas, tombolaService_getSorteosByFecha(fecha));
 </script>
 </body>
 </html>
