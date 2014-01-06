@@ -54,14 +54,15 @@ function tombolaService_getSorteosByFecha(fechaSorteo, callBackOk){
         $.ajax({ 
             url: URL,
             type:'POST', 
-            data:{fecha: fechaSorteo}, 
+            data:{fecha: fechaUtils_format(fechaSorteo, '/,dd-mm-yyyy')}, 
             dataType:'json', 
             error:function(jqXHR,text_status,strError){ 
                 alert('No hay conexión.');}, 
                 timeout:60000, 
             success:function(data){ 
                 $.each(data, function( index, item ) {
-  					item.fecha = new Date(item.fecha);
+                	console.log(fechaUtils_getDate(item.fecha));
+  					item.fecha = fechaUtils_getDate(item.fecha);
   					item.hora = function(){
 									return this.fecha.getHours()+":"+this.fecha.getMinutes(); 
 								};

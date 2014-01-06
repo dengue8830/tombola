@@ -83,3 +83,23 @@ function fechaUtils_getTurnoByFecha(fecha){
 
   return 'Tarde';
 }
+
+/*
+  Recibe una cadena representando una fecha en este formato:
+    dd/mm/yyyy,hh:mm
+  y devuelve un objeto Date representando a dicha cadena
+*/
+function fechaUtils_getDate(stringDate){
+  var split = stringDate.split(',');
+  var fechaSplit = split[0].split('/');
+
+  var dia = fechaSplit[0];
+  var mes = fechaSplit[1];
+  var anio = fechaSplit[2];
+
+  var horaSplit = split[1].split(':');
+  var hora = horaSplit[0];
+  var min = horaSplit[1];
+
+  return new Date(anio, mes-1, dia, hora, min, 0, 0);
+}
