@@ -54,20 +54,20 @@ function tombolaService_getSorteosByFecha(fechaSorteo, callBackOk){
         $.ajax({ 
             url: URL,
             type:'POST', 
-            data:fechaSorteo, 
+            data:{fecha: fechaSorteo}, 
             dataType:'json', 
             error:function(jqXHR,text_status,strError){ 
                 alert('No hay conexión.');}, 
                 timeout:60000, 
             success:function(data){ 
                 $.each(data, function( index, item ) {
-  					item.fecha = new Date();
+  					item.fecha = new Date(item.fecha);
   					item.hora = function(){
 									return this.fecha.getHours()+":"+this.fecha.getMinutes(); 
 								};
 				});
 
-                controller_mostrarSorteos_pintarSorteos(arrayDivsTablas, data);
+                callBackOk(arrayDivsTablas, data);
             } 
         });
 	}else{

@@ -138,7 +138,7 @@ function controller_mostrarSorteos_modificarFecha(nuevaFecha){
 	//fecha.setDate(fecha.getDate()-1);
 	$('#calendario').text(fechaUtils_format(fecha, '/,dd-mm-yyyy'));
 
-	tombolaService_getSorteosByFecha(fecha);
+	tombolaService_getSorteosByFecha(fecha, controller_mostrarSorteos_pintarSorteos);
 	//var sorteos = tombolaService_getSorteosByFecha(fecha);
 	//controller_mostrarSorteos_pintarSorteos(arrayDivsTablas, sorteos);
 
