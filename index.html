@@ -104,7 +104,7 @@
 			<a href="#" data-role="button" data-icon="calendar" id="calendario"></a>
 			<a href="#" data-role="button" class="ui-btn ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" id="aumentar_dia" onclick="controller_mostrarSorteos_modificarFecha('mas');"></a>
 		<!-- </div> -->
-			
+			<!-- <input onclick="connect(this.value)" type="button" value="cars" /> -->
 	</div>
 </div>
 
@@ -115,6 +115,9 @@
 <script src="js/controller/paginaController.js"></script>
 <script src="js/businesslogic/tombolaService.js"></script>
 <script type="text/javascript">
+	var ONLINE = true;
+	var URL = 'http://192.168.0.103/appPhoneServer/reply.php';
+
 	var fecha = new Date();
 	//$('#calendario').text(fechaUtils_format(fecha, '/,dd-mm-yyyy'));
 
@@ -126,8 +129,24 @@
 
 	controller_mostrarSorteos_modificarFecha(fecha);
 
-	//paginaController_pintarSorteos(divsTablas);
-	//controller_mostrarSorteos_pintarSorteos(arrayDivsTablas, tombolaService_getSorteosByFecha(fecha));
+/*	function connect(e) { 
+        var term= {button:fechaUtils_format(fecha, '/,dd-mm-yyyy')}; 
+        $.ajax({ 
+            url:'http://192.168.0.103/appPhoneServer/reply.php', 
+            type:'POST', 
+            data:term, 
+            dataType:'json', 
+            error:function(jqXHR,text_status,strError){ 
+                alert('no connection');}, 
+                timeout:60000, 
+            success:function(data){ 
+                // $("#result").html(""); 
+                // for(var i in data){ 
+                //     $("#result").append("<li>"+data[i]+"</li>"); 
+                // } 
+                console.log(data);
+            } 
+        });} */
 </script>
 </body>
 </html>

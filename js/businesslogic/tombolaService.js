@@ -32,7 +32,7 @@ function tombolaService_getSorteosDiezDias(fechaSorteo){
 	return sorteosVOs;
 }
 
-function tombolaService_getSorteosByFecha(fechaSorteo){
+/*function tombolaService_getSorteosByFecha(fechaSorteo){
 
 	var sorteosVOs = tombolaService_getSorteosDiezDias(fechaSorteo);
 	var values = new Array();
@@ -45,4 +45,32 @@ function tombolaService_getSorteosByFecha(fechaSorteo){
 	}
 
 	return values;
+}*/
+
+function tombolaService_getSorteosByFecha(fechaSorteo, callBackOk){
+
+	if(ONLINE){
+
+        $.ajax({ 
+            url: URL,
+            type:'POST', 
+            data:fechaSorteo, 
+            dataType:'json', 
+            error:function(jqXHR,text_status,strError){ 
+                alert('No hay conexión.');}, 
+                timeout:60000, 
+            success:function(data){ 
+                $.each(data, function( index, item ) {
+  					item.fecha = new Date();
+  					item.hora = function(){
+									return this.fecha.getHours()+":"+this.fecha.getMinutes(); 
+								};
+				});
+
+                controller_mostrarSorteos_pintarSorteos(arrayDivsTablas, data);
+            } 
+        });
+	}else{
+
+	}
 }
