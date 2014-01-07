@@ -71,8 +71,8 @@
 	<div data-role="header" data-theme="a" >
 		<h3> Tombola Jujeña</h3>
 
-		<a href="#" class="ui-btn ui-icon-search ui-btn-icon-notext ui-corner-all" data-role="button">Buscar</a>
-		<a href="#page2" class="ui-btn ui-icon-cloud ui-btn-icon-notext ui-corner-all" data-theme="b" data-transition="slidefade">Buscar</a>
+		<a href="#pageInfo" class="ui-btn ui-icon-info ui-btn-icon-notext ui-corner-all" data-role="button" data-transition="slidefade" data-direction="reverse">Info</a>
+		<a href="#page2" class="ui-btn ui-icon-cloud ui-btn-icon-notext ui-corner-all" data-theme="b" data-transition="slidefade">Sueños</a>
 	<div data-role="navbar"></div>			
 				
 				
@@ -311,6 +311,41 @@
 			<!-- <input onclick="connect(this.value)" type="button" value="cars" /> -->
 	</div>
 </div>
+
+
+<!-- page de Informacion -->
+<div data-role="page" data-theme="a" id="pageInfo">
+	<!-- cabecera -->
+	<div data-role="header" data-theme="a" >
+		<h3>Información</h3>
+
+		<a href="#"></a>
+		<a href="#page" class="ui-btn ui-icon-arrow-r  ui-btn-icon-notext ui-corner-all" data-theme="b" data-transition="slidefade" ></a>
+	<div data-role="navbar"></div>			
+				
+				
+	</div>
+	<!-- content -->
+	<div data-role="content">
+		
+		<h3>Si Jugó Tombola Jujeña, no tire su boleta</h3>
+<p>
+Premios por Aproximacion: Es una posibilidad mas que usted tiene para ganar. El numero de tres cifras anterior y posterior al Primer Premio de la Tombola Jujeña tiene premio por aproximacion y se paga 10 veces el valor de la jugada.
+
+Las boletas que jueguen con bolillero de Salta participan con la misma modalidad de premios por aproximacion.
+</p>
+	</div>
+	<!-- footer -->
+	<div data-role="footer" data-position="fixed">
+		
+		Banco de Accion Social
+			
+	</div>
+</div>
+
+
+
+
 <script src="js/model/vo/sorteoVO.js"></script>
 
 <script src="js/utils/utils.js"></script>
@@ -337,7 +372,7 @@
 	arrayDivsTablas.push($('#tablas_3'));
 	arrayDivsTablas.push($('#tablas_4'));
 
-	controller_mostrarSorteos_modificarFecha(fecha);
+	// controller_mostrarSorteos_modificarFecha(fecha);
 
 /*	function connect(e) { 
         var term= {button:fechaUtils_format(fecha, '/,dd-mm-yyyy')}; 
