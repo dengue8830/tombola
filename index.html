@@ -66,7 +66,7 @@
 	</style>
 </head>
 <body>
-<div data-role="page" data-theme="a" id="page">
+<div data-role="page" id="page">
 	<!-- cabecera -->
 	<div data-role="header" data-theme="a" >
 		<h3> Tombola Jujeña</h3>
@@ -78,17 +78,15 @@
 				
 	</div>
 	<!-- content -->
-	<div data-role="content" id="contenedor">
+	<div data-role="content" id="contenedor" data-theme="c">
 		
 		<div data-role="collapsible-set" data-content-theme="a" id="acordion">
 			
-				<div data-role="collapsible"  id="tablas_1">
-<h3></h3>
-<div data-role="content"></div>
-				
-				</div>
+			<div data-role="collapsible"  id="tablas_1">
+				<h3></h3>
+				<div data-role="content"></div>
+			</div>
 
-			
 			<div data-role="collapsible" id="tablas_2">
 				<h3></h3>
 				<div data-role="content"></div>
@@ -110,16 +108,24 @@
 	<div data-role="footer" data-position="fixed">
 		
 		<!-- <div data-role="controlgroup" data-type="horizontal"> -->
-			<a href="#" data-role="button" class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" id="restar_dia" onclick="controller_mostrarSorteos_modificarFecha('menos');"></a>
-			<a href="#" data-role="button" data-icon="calendar" id="calendario"></a>
+		<div class="ui-grid-b">
 
-			<div style="display:none">
-  				<input name="ctrlgrp" type="text" data-role="datebox"
-   					 data-options='{"mode": "datebox", "centerHoriz": true}' id="ctrlgrp" />
+			<div class="ui-block-a">
+				<a href="#" data-role="button" class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" id="restar_dia" onclick="controller_mostrarSorteos_modificarFecha('menos');"></a> </div>
+			<div class="ui-block-b">
+
+				<a href="#" data-role="button" data-icon="calendar" id="calendario"></a>
+
+				<div style="display:none">
+  					<input name="ctrlgrp" type="text" data-role="datebox"
+   						 data-options='{"mode": "datebox", "centerHoriz": true}' id="ctrlgrp" />
+				</div>
+
 			</div>
-
-			<a href="#" data-role="button" class="ui-btn ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" id="aumentar_dia" onclick="controller_mostrarSorteos_modificarFecha('mas');"></a>
-		<!-- </div> -->
+			<div class="ui-block-c">
+				<a href="#" data-role="button" class="ui-btn ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" id="aumentar_dia" onclick="controller_mostrarSorteos_modificarFecha('mas');"></a>
+			</div>
+	   </div>
 			<!-- <input onclick="connect(this.value)" type="button" value="cars" /> -->
 	</div>
 </div>
