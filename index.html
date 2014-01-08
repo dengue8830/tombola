@@ -101,7 +101,10 @@
 				<h3></h3>
 				<div data-role="content"></div>
 			</div>
-
+			
+		</div>
+		<div data-role="content" style="display:none" id="div_msj">
+				<p>No hay resultados para este dia</p>
 		</div>
 	</div>
 	<!-- footer -->
@@ -355,6 +358,8 @@ Las boletas que jueguen con bolillero de Salta participan con la misma modalidad
 <script src="js/model/vo/sorteoVO.js"></script>
 
 <script src="js/utils/utils.js"></script>
+<script src="js/connection/connection.js"></script>
+<script src="js/model/dao/sorteoDAO.js"></script>
 
 <script src="js/controller/paginaController.js"></script>
 <script src="js/businesslogic/tombolaService.js"></script>
@@ -366,8 +371,12 @@ Las boletas que jueguen con bolillero de Salta participan con la misma modalidad
   		alert($(this).val());
 	});
 
-	var ONLINE = true;
+	var ONLINE = false;
 	var URL = 'http://192.168.0.103/appPhoneServer/reply.php';
+
+	var db = window.openDatabase("TombolaBD", "1.0", "TombolaBD", 200000);
+	//ejecutar('drop table sorteos');
+    
 
 	var fecha = new Date();
 	//$('#calendario').text(fechaUtils_format(fecha, '/,dd-mm-yyyy'));
@@ -378,8 +387,13 @@ Las boletas que jueguen con bolillero de Salta participan con la misma modalidad
 	arrayDivsTablas.push($('#tablas_3'));
 	arrayDivsTablas.push($('#tablas_4'));
 
-	// controller_mostrarSorteos_modificarFecha(fecha);
-
+//connection_cargarBD(controller_mostrarSorteos_modificarFecha(fecha), connection_createTables);
+//controller_mostrarSorteos_modificarFecha(fecha);
+	
+db.transaction(function(tx) {
+        tx.executeSql('select 1 from sorteos',
+          [], function(tx, result){controller_mostrarSorteos_modificarFecha(fecha)}, connection_createTables);
+    });
 /*	function connect(e) { 
         var term= {button:fechaUtils_format(fecha, '/,dd-mm-yyyy')}; 
         $.ajax({ 

@@ -32,46 +32,87 @@ function tombolaService_getSorteosDiezDias(fechaSorteo){
 	return sorteosVOs;
 }
 
-/*function tombolaService_getSorteosByFecha(fechaSorteo){
-
-	var sorteosVOs = tombolaService_getSorteosDiezDias(fechaSorteo);
-	var values = new Array();
-
-	for (var i = 0; i < 4; i++) {
-		var unSorteo = sorteosVOs[i];
-		if(fechaSorteo.getDate == unSorteo.fecha.getDate && fechaSorteo.getMonth == unSorteo.fecha.getMonth && fechaSorteo.getYear == unSorteo.fecha.getYear){
-			values.push(unSorteo);
-		}
-	}
-
-	return values;
-}*/
-
-function tombolaService_getSorteosByFecha(fechaSorteo, callBackOk){
+function tombolaService_getSorteosByFecha(fechaSorteo, callBackOk, callbackError){
 
 	if(ONLINE){
+		console.log('online');
 
+		callBackOk.push(prepararSorteos);
+		sorteoDao_getByFecha_online(fechaSorteo, callBackOk, callbackError);
+	}else{
+		console.log('offline');
+		
+		callBackOk.push(prepararSorteos);
+		sorteoDao_getByFecha_offline(fechaSorteo, callBackOk, callbackError);
+	}
+}
+
+function prepararSorteos(data, callBackOk, callbackError){
+    var sorteos = new Array();
+
+	$.each(data, function( i, item ) {
+                	//console.log(fechaUtils_getDate(item.fecha));
+          	  	var unSorteoVo = new SorteoVO(item.id_sorteo, item.nombre, item.num, fechaUtils_getDate(item.fecha), item.lugar, item.numeros.split(','));
+          	  	
+          	  	sorteos.push(unSorteoVo);
+	});
+
+	callBackOk.pop()(arrayDivsTablas, sorteos); 
+}
+
+/*function tombolaService_getSorteosByFecha(fechaSorteo, callBackOk, callbackError){
+
+	if(ONLINE){
+		console.log('online');
         $.ajax({ 
             url: URL,
             type:'POST', 
-            data:{fecha: fechaUtils_format(fechaSorteo, '/,dd-mm-yyyy')}, 
+            data:{fecha: fechaUtils_format(fechaSorteo, '-,dd-mm-yyyy')}, 
             dataType:'json', 
             error:function(jqXHR,text_status,strError){ 
                 alert('No hay conexión.');}, 
                 timeout:60000, 
             success:function(data){ 
                 $.each(data, function( index, item ) {
-                	console.log(fechaUtils_getDate(item.fecha));
+                	//console.log(fechaUtils_getDate(item.fecha));
+                	item.numeros = item.numeros.split(',');
   					item.fecha = fechaUtils_getDate(item.fecha);
   					item.hora = function(){
 									return this.fecha.getHours()+":"+this.fecha.getMinutes(); 
 								};
 				});
 
-                callBackOk(arrayDivsTablas, data);
+                callBackOk.pop()(arrayDivsTablas, data);
             } 
         });
+		callBackOk.push(prueba);
+		sorteoDao_getByFecha_online(fechaSorteo, callBackOk, callbackError);
 	}else{
+		console.log('offline');
+		//console.log(fechaUtils_getFromatedDateYYYYMMDD(fechaSorteo)+' 11:30:0.000');
+		db.transaction(function(tx) {
+          tx.executeSql("select sort.* from sorteos as sort where strftime('%d/%m/%Y',sort.fecha) = ? order by sort.fecha asc",[fechaUtils_format(fechaSorteo, '/,dd-mm-yyyy')], function(tx, result){
 
+          	var dataset = result.rows;
+          	var sorteos = new Array();
+
+          	  for (var i = 0; i < dataset.length; i++) {
+          	  	var item = dataset.item(i);
+
+          	  	var unSorteoVo = new SorteoVO(item.id_sorteo, item.nombre, item.num, fechaUtils_getDate(item.fecha), item.lugar, item.numeros.split(','));
+          	  	
+          	  	sorteos.push(unSorteoVo);
+          	  }
+
+        	callBackOk.pop()(arrayDivsTablas, sorteos);	
+          	
+          }, function (tx, error){
+          	alert(error.message);
+          });
+
+        });
+		callBackOk.push(prueba);
+
+		sorteoDao_getByFecha_offline(fechaSorteo, callBackOk, callbackError);
 	}
-}
+}*/

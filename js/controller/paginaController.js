@@ -1,8 +1,27 @@
 function controller_mostrarSorteos_pintarSorteos(arrayDivs, arraySorteosVos){
 	//var arraySorteosVos = tombolaService_getSorteosDiezDias();
+	if(arraySorteosVos.length == 0 ){
+		/*for (var i = 0; i < arrayDivs.length; i++) {
+			arrayDivs[i].hide();
+		}*/
+		$('#acordion').hide();
+		/*var e = document.getElementById('div_msj');
+		if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';*/
+       $('#div_msj').show();
+		//$('#div_msj').attr('style.display ', 'block');
+		//document.getElementById('div_msj').style.display = 'block';
+		//$('#div_msj').append('<p>No hay resultados para este día</p>');
+		
+		return;
+	}
 
 	for (var i = 0; i < arrayDivs.length; i++) {
 		var element = arrayDivs[i];
+		$('#acordion').show();
+		$('#div_msj').hide();
 		//if(element.children()[1]) console.log(element.children()[1].children);
 		//element.children().remove();
 		//element.trigger('refresh');
@@ -138,7 +157,10 @@ function controller_mostrarSorteos_modificarFecha(nuevaFecha){
 	//fecha.setDate(fecha.getDate()-1);
 	$('#calendario').text(fechaUtils_format(fecha, '/,dd-mm-yyyy'));
 
-	tombolaService_getSorteosByFecha(fecha, controller_mostrarSorteos_pintarSorteos);
+	var pila = new Array();
+	pila.push(controller_mostrarSorteos_pintarSorteos);
+
+	tombolaService_getSorteosByFecha(fecha, pila, connection_error);
 	//var sorteos = tombolaService_getSorteosByFecha(fecha);
 	//controller_mostrarSorteos_pintarSorteos(arrayDivsTablas, sorteos);
 

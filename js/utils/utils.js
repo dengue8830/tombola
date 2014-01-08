@@ -86,12 +86,12 @@ function fechaUtils_getTurnoByFecha(fecha){
 
 /*
   Recibe una cadena representando una fecha en este formato:
-    dd/mm/yyyy,hh:mm
+    dd-mm-yyyy hh:mm:ss.sss
   y devuelve un objeto Date representando a dicha cadena
 */
 function fechaUtils_getDate(stringDate){
-  var split = stringDate.split(',');
-  var fechaSplit = split[0].split('/');
+  var split = stringDate.split(' ');
+  var fechaSplit = split[0].split('-');
 
   var dia = fechaSplit[0];
   var mes = fechaSplit[1];
@@ -100,6 +100,28 @@ function fechaUtils_getDate(stringDate){
   var horaSplit = split[1].split(':');
   var hora = horaSplit[0];
   var min = horaSplit[1];
+  var segSplit = horaSplit[2].split('.');
+  var seg = segSplit[0];
+  var mil = segSplit[1];
 
-  return new Date(anio, mes-1, dia, hora, min, 0, 0);
+  return new Date(anio, mes-1, dia, hora, min, seg, mil);
 }
+
+//se usar para guardar en BD
+function fechaUtils_getFromatedDateYYYYMMDD(date){
+  var yyyy = date.getFullYear().toString();                                    
+  var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based         
+  var dd  = date.getDate().toString();             
+                            
+  return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
+}
+
+/*function fechaUtils_getDateJSfromDateBBDD(fechaStr){
+  var yyyy = date.getFullYear().toString();                                    
+  var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based         
+  var dd  = date.getDate().toString();             
+  var date = new Date();
+  
+  return 
+  return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
+}*/

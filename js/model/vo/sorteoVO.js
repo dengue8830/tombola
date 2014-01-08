@@ -1,7 +1,7 @@
-function SorteoVO(id, nombre, numero, fecha, lugar, numeros){
-	this.id = id;
+function SorteoVO(idSorteo, nombre, num, fecha, lugar, numeros){
+	this.idSorteo = idSorteo;
 	this.nombre = nombre;
-	this.numero = numero;
+	this.num = num;
 	this.fecha = fecha;
 	this.hora = function(){
 		return this.fecha.getHours()+":"+this.fecha.getMinutes(); 
