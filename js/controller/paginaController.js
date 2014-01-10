@@ -35,7 +35,7 @@ function controller_mostrarSorteos_pintarSorteos(arrayDivs, arraySorteosVos){
 		if(element.find('h3').text() == ''){
 			element.find('h3').text(unSorteo.nombre+' - '+unSorteo.lugar);//+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy')
 		}else{
-			element.find('.ui-btn-inherit').text(unSorteo.nombre+' - '+unSorteo.lugar);//+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy')
+			element.find('.ui-btn-inherit').text(unSorteo.nombre+' - '+unSorteo.lugar+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy'));//+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy')
 		}
 		
 		//element.append('<h3 >'+unSorteo.nombre+' - '+unSorteo.lugar+'</h3>').trigger("create");

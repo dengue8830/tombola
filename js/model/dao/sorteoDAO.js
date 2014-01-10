@@ -45,6 +45,7 @@ function sorteoDao_getByFecha_online(fecha, callBackOk, callbackError){
 
 function sorteoDao_getByFecha_offline(fecha, callBackOk, callbackError){
   console.log('dao');
+  //sort.id_sorteo, sort.nombre, sort.num, strftime('%d-%m-%Y %H:%M:%f',sort.fecha) as fecha, sort.lugar, sort.numeros
     db.transaction(function(tx) {
           tx.executeSql("select sort.* from sorteos as sort where strftime('%d/%m/%Y',sort.fecha) = ? order by sort.fecha asc",[fechaUtils_format(fecha, '/,dd-mm-yyyy')], function(tx, result){
 

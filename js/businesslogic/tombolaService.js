@@ -51,6 +51,7 @@ function prepararSorteos(data, callBackOk, callbackError){
     var sorteos = new Array();
 
 	$.each(data, function( i, item ) {
+		//console.log(fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy'));
                 	//console.log(fechaUtils_getDate(item.fecha));
           	  	var unSorteoVo = new SorteoVO(item.id_sorteo, item.nombre, item.num, fechaUtils_getDate(item.fecha), item.lugar, item.numeros.split(','));
           	  	

@@ -75,7 +75,7 @@ function fechaUtils_getDiaSemanaString(dia){
 }
 
 function fechaUtils_getTurnoByFecha(fecha){
-  var mediodia = new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate(), 12, 0, 0, 0);
+  var mediodia = new Date(fecha.getFullYear(), fecha.getMonth()-1, fecha.getDate(), 12, 0, 0, 0);
 
   if(fecha < mediodia){
     return 'Mañana';
@@ -87,15 +87,29 @@ function fechaUtils_getTurnoByFecha(fecha){
 /*
   Recibe una cadena representando una fecha en este formato:
     dd-mm-yyyy hh:mm:ss.sss
+    o en este
+    yyyy-mm-dd hh:mm:ss.sss
   y devuelve un objeto Date representando a dicha cadena
 */
 function fechaUtils_getDate(stringDate){
   var split = stringDate.split(' ');
-  var fechaSplit = split[0].split('-');
+  var fechaSplit;
 
-  var dia = fechaSplit[0];
+  if(split[0].indexOf('-') != -1){
+    fechaSplit = split[0].split('-');
+  }else{
+    fechaSplit = split[0].split('/');
+  }
+  
+  if(fechaSplit[0].length == 2){//dd-mm-yyyy
+    var dia = fechaSplit[0];
+    var anio = fechaSplit[2];
+  }else{//yyyy-mm-dd
+    var dia = fechaSplit[2];
+    var anio = fechaSplit[0];
+  }
+
   var mes = fechaSplit[1];
-  var anio = fechaSplit[2];
 
   var horaSplit = split[1].split(':');
   var hora = horaSplit[0];
@@ -103,7 +117,8 @@ function fechaUtils_getDate(stringDate){
   var segSplit = horaSplit[2].split('.');
   var seg = segSplit[0];
   var mil = segSplit[1];
-
+console.log(stringDate);
+console.log(anio+','+mes+','+dia+','+hora+','+min+','+seg+','+mil);
   return new Date(anio, mes-1, dia, hora, min, seg, mil);
 }
 

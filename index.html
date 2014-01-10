@@ -250,12 +250,7 @@ Las boletas que jueguen con bolillero de Salta participan con la misma modalidad
 <script src="js/controller/paginaController.js"></script>
 <script src="js/businesslogic/tombolaService.js"></script>
 <script type="text/javascript">
-	$('#calendario').on('vclick', function() {
-  		$('#ctrlgrp').datebox('open');
-	});
-	$('#ctrlgrp').bind('change', function(e,p) {
-  		alert($(this).val());
-	});
+	configurarCalendario();
 
 	var ONLINE = false;
 	var URL = 'http://192.168.0.103/appPhoneServer/reply.php';
@@ -277,6 +272,52 @@ Las boletas que jueguen con bolillero de Salta participan con la misma modalidad
 	
 	//cargarSuenios();
 
+	function configurarCalendario(){
+		jQuery.extend(jQuery.mobile.datebox.prototype.options.lang, {
+    'es': {
+        setDateButtonLabel: "OK",
+        setTimeButtonLabel: "Fecha",
+        setDurationButtonLabel: "Set Duration",
+        calTodayButtonLabel: "Jump to Today",
+        titleDateDialogLabel: "Fecha",
+        titleTimeDialogLabel: "Set Time",
+        daysOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        daysOfWeekShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+        monthsOfYear: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        monthsOfYearShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        durationLabel: ['Days', 'Hours', 'Minutes', 'Seconds'],
+        durationDays: ['Day', 'Days'],
+        tooltip: "Open Date Picker",
+        nextMonth: "Next Month",
+        prevMonth: "Previous Month",
+        timeFormat: 12,
+        headerFormat: '',//%A, %B %-d, %Y
+        dateFieldOrder: ['d', 'm', 'y'],
+        timeFieldOrder: ['h', 'i', 'a'],
+        slideFieldOrder: ['y', 'm', 'd'],
+        dateFormat: '%d/%m/%Y',
+        useArabicIndic: false,
+        isRTL: false,
+        calStartDay: 0,
+        clearButton: 'clear',
+        durationOrder: ['d', 'h', 'i', 's'],
+        meridiem: ['AM', 'PM'],
+        timeOutput: '%k:%M', // 12hr: '%l:%M %p', 24hr: '%k:%M',
+        durationFormat: '%Dd %DA, %Dl:%DM:%DS',
+        calDateListLabel: 'Other Dates'
+    }
+	});
+	jQuery.extend(jQuery.mobile.datebox.prototype.options, {
+    	useLang: 'es'
+	});
+	$('#calendario').on('vclick', function() {
+  		$('#ctrlgrp').datebox('open');
+	});
+	$('#ctrlgrp').bind('change', function(e,p) {
+  		//alert($(this).val());
+  		controller_mostrarSorteos_modificarFecha(fechaUtils_getDate($(this).val()+' 00:00:00.000'));
+	});
+	}
 </script>
 </body>
 </html>
