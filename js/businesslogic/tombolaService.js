@@ -34,17 +34,17 @@ function tombolaService_getSorteosDiezDias(fechaSorteo){
 
 function tombolaService_getSorteosByFecha(fechaSorteo, callBackOk, callbackError){
 
-	if(ONLINE){
-		console.log('online');
+	//if(ONLINE){
+		console.log('intentando online...');
 
-		callBackOk.push(prepararSorteos);
-		sorteoDao_getByFecha_online(fechaSorteo, callBackOk, callbackError);
-	}else{
+		//callBackOk.push(prepararSorteos);
+		sorteoDao_getByFecha_online(fechaSorteo);
+	/*}else{
 		console.log('offline');
 		
 		callBackOk.push(prepararSorteos);
 		sorteoDao_getByFecha_offline(fechaSorteo, callBackOk, callbackError);
-	}
+	}*/
 }
 
 function prepararSorteos(data, callBackOk, callbackError){
@@ -58,7 +58,8 @@ function prepararSorteos(data, callBackOk, callbackError){
           	  	sorteos.push(unSorteoVo);
 	});
 
-	callBackOk.pop()(arrayDivsTablas, sorteos); 
+	//callBackOk.pop()(arrayDivsTablas, sorteos); 
+	controller_mostrarSorteos_pintarSorteos(arrayDivsTablas, sorteos); 
 }
 
 /*function tombolaService_getSorteosByFecha(fechaSorteo, callBackOk, callbackError){

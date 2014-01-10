@@ -4,24 +4,48 @@ function controller_mostrarSorteos_pintarSorteos(arrayDivs, arraySorteosVos){
 		/*for (var i = 0; i < arrayDivs.length; i++) {
 			arrayDivs[i].hide();
 		}*/
-		$('#acordion').hide();
+		//$('#acordion').hide();
 		/*var e = document.getElementById('div_msj');
 		if(e.style.display == 'block')
           e.style.display = 'none';
        else
           e.style.display = 'block';*/
-       $('#div_msj').show();
+       //$('#div_msj').show();
 		//$('#div_msj').attr('style.display ', 'block');
 		//document.getElementById('div_msj').style.display = 'block';
 		//$('#div_msj').append('<p>No hay resultados para este día</p>');
+		var unSorteoVo = new SorteoVO(0, 'La Primera', 0, null, 'Jujuy', null);
+		arraySorteosVos.push(unSorteoVo);
+		unSorteoVo = new SorteoVO(0, 'Matutina', 0, null, 'Salta', null);
+		arraySorteosVos.push(unSorteoVo);
+		unSorteoVo = new SorteoVO(0, 'Vespertina', 0, null, 'Tucumán', null);
+		arraySorteosVos.push(unSorteoVo);
+		unSorteoVo = new SorteoVO(0, 'Nocturna', 0, null, 'Cordoba', null);
+		arraySorteosVos.push(unSorteoVo);
+
+		arraySorteosVos.push();
+		for (var i = 0; i < arrayDivs.length; i++) {
+			var element = arrayDivs[i];
+			var unSorteo = arraySorteosVos[i];
+
+			if(element.find('h3').text() == ''){
+			element.find('h3').text(unSorteo.nombre+' - '+unSorteo.lugar+' (vacío)');
+		}else{
+			element.find('.ui-btn-inherit').text(unSorteo.nombre+' - '+unSorteo.lugar+' (vacío)');
+		}
+	
+       		element.find('div').children().remove();
+       		element.find('div').append('<p>no hya datos para hoy</p>');
+		}
+
 		
 		return;
 	}
 
 	for (var i = 0; i < arrayDivs.length; i++) {
 		var element = arrayDivs[i];
-		$('#acordion').show();
-		$('#div_msj').hide();
+		//$('#acordion').show();
+		//$('#div_msj').hide();
 		//if(element.children()[1]) console.log(element.children()[1].children);
 		//element.children().remove();
 		//element.trigger('refresh');

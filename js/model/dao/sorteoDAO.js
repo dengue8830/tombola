@@ -44,7 +44,7 @@ function sorteoDao_getByFecha_online(fecha, callBackOk, callbackError){
 }*/
 
 function sorteoDao_getByFecha_offline(fecha, callBackOk, callbackError){
-  console.log('dao');
+  console.log('error al online... intentando offline');
   //sort.id_sorteo, sort.nombre, sort.num, strftime('%d-%m-%Y %H:%M:%f',sort.fecha) as fecha, sort.lugar, sort.numeros
     db.transaction(function(tx) {
           tx.executeSql("select sort.* from sorteos as sort where strftime('%d/%m/%Y',sort.fecha) = ? order by sort.fecha asc",[fechaUtils_format(fecha, '/,dd-mm-yyyy')], function(tx, result){
@@ -56,7 +56,9 @@ function sorteoDao_getByFecha_offline(fecha, callBackOk, callbackError){
                 items.push(dataset.item(i));
               }
 
-          callBackOk.pop()(items, callBackOk, callbackError); 
+            //callBackOk.pop()(items, callBackOk, callbackError); 
+            console.log('logrado offline');
+            prepararSorteos(items);
             
           }, function (tx, error){
             alert(error.message);
@@ -72,10 +74,15 @@ function sorteoDao_getByFecha_online(fecha, callBackOk, callbackError){
             data:{fecha: fechaUtils_format(fecha, '-,dd-mm-yyyy')}, 
             dataType:'json', 
             error:function(jqXHR,text_status,strError){ 
-                alert('No hay conexión.');}, 
-                timeout:60000, 
+                $('#div_msj').show();
+                sorteoDao_getByFecha_offline(fecha);
+              }, 
+            timeout:60000, 
             success: function (data){
-              callBackOk.pop()(data, callBackOk, callbackError);
-            }
+                //callBackOk.pop()(data, callBackOk, callbackError);
+                console.log('logrado online');
+                $('#div_msj').hide();
+                prepararSorteos(data);
+              }
         });
 }

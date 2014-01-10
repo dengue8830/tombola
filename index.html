@@ -79,7 +79,13 @@
 	</div>
 	<!-- content -->
 	<div data-role="content" id="contenedor" data-theme="c">
-		
+		<!-- <div class="ui-bar ui-bar-a" style="height:60px"><p id="">Block A</p></div> -->
+
+		<div class="ui-bar ui-bar-a" data-role="content" style="display:none" id="div_msj">
+				<p>Sin conexión, consultando localmente</p>
+		</div>
+		<!-- <div>Sin conexión a internet... usando datos locales (última actualización xx/xx/xxxx xx:xx)</div> -->
+
 		<div data-role="collapsible-set" data-content-theme="a" id="acordion">
 			
 			<div data-role="collapsible"  id="tablas_1">
@@ -103,9 +109,6 @@
 			</div>
 			
 		</div>
-		<div data-role="content" style="display:none" id="div_msj">
-				<p>No hay resultados para este dia</p>
-		</div>
 	</div>
 	<!-- footer -->
 	<div data-role="footer" data-position="fixed">
@@ -121,7 +124,7 @@
 
 				<div style="display:none">
   					<input name="ctrlgrp" type="text" data-role="datebox"
-   						 data-options='{"mode": "datebox", "centerHoriz": true}' id="ctrlgrp" />
+   						 data-options='{"mode": "datebox", "centerHoriz": true}' id="ctrlgrp"/>
 				</div>
 
 			</div>
@@ -252,7 +255,7 @@ Las boletas que jueguen con bolillero de Salta participan con la misma modalidad
 <script type="text/javascript">
 	configurarCalendario();
 
-	var ONLINE = false;
+	var ONLINE = true;
 	var URL = 'http://192.168.0.103/appPhoneServer/reply.php';
 
 	var db = window.openDatabase("TombolaBD", "1.0", "TombolaBD", 200000);
@@ -304,20 +307,53 @@ Las boletas que jueguen con bolillero de Salta participan con la misma modalidad
         meridiem: ['AM', 'PM'],
         timeOutput: '%k:%M', // 12hr: '%l:%M %p', 24hr: '%k:%M',
         durationFormat: '%Dd %DA, %Dl:%DM:%DS',
-        calDateListLabel: 'Other Dates'
+        calDateListLabel: 'Other Dates',
+        beforeToday: 'true',
+        afterToday: 'true'
     }
 	});
 	jQuery.extend(jQuery.mobile.datebox.prototype.options, {
     	useLang: 'es'
 	});
+
+
+
+/*$('#ctrlgrp').live('dateboxcreate', function() {
+  $('#ctrlgrp').datebox({'maxDays': getmax()});
+  $('#ctrlgrp').datebox({'minDays': getmin()});
+});*/
+//console.log(getdays());
 	$('#calendario').on('vclick', function() {
+		
   		$('#ctrlgrp').datebox('open');
+  		//$('#ctrlgrp').datebox({'maxDays': getdays()});
+  		//$('#ctrlgrp').datebox({'minDays': getdays()});
 	});
 	$('#ctrlgrp').bind('change', function(e,p) {
   		//alert($(this).val());
   		controller_mostrarSorteos_modificarFecha(fechaUtils_getDate($(this).val()+' 00:00:00.000'));
 	});
-	}
+}
+
+/*	function getmin() { 
+  var rightnow = new Date();
+
+
+  return parseInt(rightnow.getDate()-10);
+}
+function getdays() { 
+  var rightnow = new Date()
+    today = new Date(rightnow.getFullYear(), rightnow.getMonth(), rightnow.getDate(), 0,0,0,0)
+    maxdate = new Date(2014, 5, 30, 0,0,0,0)
+
+  daysuntil = ( maxdate - today ) / ( 1000 * 60 * 60 * 24 )
+
+  return parseInt(daysuntil,10)
+}
+function getmax(){
+
+  return new Date();	
+}*/
 </script>
 </body>
 </html>
