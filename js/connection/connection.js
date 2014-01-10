@@ -18,12 +18,12 @@ var createtable_sorteos_sql ='CREATE TABLE IF NOT EXISTS sorteos (id_sorteo INTE
 var insert_sorteos_1_sql = 'INSERT OR REPLACE INTO sorteos (id_sorteo, nombre, num, fecha, lugar, numeros) VALUES (1, "La Primera", 5732, "2014-01-07 11:30:00.000", "Jujuy", "2112,4512,3463,4254,5675,2346,2687,8758,5789,8510,4511,3212,2113,1214,4515,7816,1877,6418,9019,2320")';
 var insert_sorteos_2_sql = 'INSERT OR REPLACE INTO sorteos (id_sorteo, nombre, num, fecha, lugar, numeros) VALUES (2, "Matutina", 4532, "2014-01-07 12:30:00.000", "Salta", "2112,4512,3463,4254,5675,2346,2687,8758,5789,8510,4511,3212,2113,1214,4515,7816,1877,6418,9019,2320")';
 var insert_sorteos_3_sql = 'INSERT OR REPLACE INTO sorteos (id_sorteo, nombre, num, fecha, lugar, numeros) VALUES (3, "Vespertina", 1342, "2014-01-07 20:30:00.000", "Tucumán", "2112,4512,3463,4254,5675,2346,2687,8758,5789,8510,4511,3212,2113,1214,4515,7816,1877,6418,9019,2320")';
-var insert_sorteos_4_sql = 'INSERT OR REPLACE INTO sorteos (id_sorteo, nombre, num, fecha, lugar, numeros) VALUES (4, "Nocturna", 2332, "2014-01-07 21:30:00.000", "Cordova", "2112,4512,3463,4254,5675,2346,2687,8758,5789,8510,4511,3212,2113,1214,4515,7816,1877,6418,9019,2320")';
+var insert_sorteos_4_sql = 'INSERT OR REPLACE INTO sorteos (id_sorteo, nombre, num, fecha, lugar, numeros) VALUES (4, "Nocturna", 2332, "2014-01-07 21:30:00.000", "Cordoba", "2112,4512,3463,4254,5675,2346,2687,8758,5789,8510,4511,3212,2113,1214,4515,7816,1877,6418,9019,2320")';
 
 var insert_sorteos_5_sql = 'INSERT OR REPLACE INTO sorteos (id_sorteo, nombre, num, fecha, lugar, numeros) VALUES (5, "La Primera", 7732, "2014-01-06 11:30:00.000", "Jujuy", "2112,4512,3463,4254,5675,2346,2687,8758,5789,8510,4511,3212,2113,1214,4515,7816,1877,6418,9019,2320")';
 var insert_sorteos_6_sql = 'INSERT OR REPLACE INTO sorteos (id_sorteo, nombre, num, fecha, lugar, numeros) VALUES (6, "Matutina", 4532, "2014-01-06 12:30:00.000", "Salta", "2112,4512,3463,4254,5675,2346,2687,8758,5789,8510,4511,3212,2113,1214,4515,7816,1877,6418,9019,2320")';
 var insert_sorteos_7_sql = 'INSERT OR REPLACE INTO sorteos (id_sorteo, nombre, num, fecha, lugar, numeros) VALUES (7, "Vespertina", 2342, "2014-01-06 20:30:00.000", "Tucumán", "2112,4512,3463,4254,5675,2346,2687,8758,5789,8510,4511,3212,2113,1214,4515,7816,1877,6418,9019,2320")';
-var insert_sorteos_8_sql = 'INSERT OR REPLACE INTO sorteos (id_sorteo, nombre, num, fecha, lugar, numeros) VALUES (8, "Nocturna", 6732, "2014-01-06 21:30:00.000", "Cordova", "2112,4512,3463,4254,5675,2346,2687,8758,5789,8510,4511,3212,2113,1214,4515,7816,1877,6418,9019,2320")';
+var insert_sorteos_8_sql = 'INSERT OR REPLACE INTO sorteos (id_sorteo, nombre, num, fecha, lugar, numeros) VALUES (8, "Nocturna", 6732, "2014-01-06 21:30:00.000", "Cordoba", "2112,4512,3463,4254,5675,2346,2687,8758,5789,8510,4511,3212,2113,1214,4515,7816,1877,6418,9019,2320")';
 
 
 /*var insert_detalle_cabala_sql = 'INSERT OR REPLACE INTO detalle_cabala (id_detalle_cabala, id_cabala, clave, valor) VALUES (1, 1, "00", "HUEVOS")';
@@ -77,6 +77,7 @@ function connection_createTables(callbackOk, callbackError) {
   ejecutar(insert_sorteos_6_sql);
   ejecutar(insert_sorteos_7_sql);
   ejecutar(insert_sorteos_8_sql);
+
   controller_mostrarSorteos_modificarFecha(fecha);
 }
 
@@ -92,6 +93,6 @@ function connection_error(tx, error){
         alert(error.message);
 }
 
-function connection_cargarBD(ok, err){
-  ejecutar('select 1 from sorteos', function(tx, result){ok;}, err);
+function connection_cargarBD(callBackOk, callBackError){
+  ejecutar('select 1 from sorteos', callBackOk, callBackError);
 }

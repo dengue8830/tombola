@@ -125,3 +125,13 @@ function fechaUtils_getFromatedDateYYYYMMDD(date){
   return 
   return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
 }*/
+
+function getStringPrimeraLetraMayus(txt){
+  
+  var indexof = txt.indexOf('-');
+
+  if(indexof == -1){
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  }
+    return txt.charAt(0).toUpperCase() + txt.substr(1, indexof-1).toLowerCase()+txt.charAt(indexof)+txt.charAt(indexof+1).toUpperCase()+txt.substr(indexof+2).toLowerCase();
+}
