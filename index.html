@@ -4,17 +4,18 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Default theme - jQuery Mobile Demos</title>
-	<link rel="stylesheet" href="css/jquery.mobile-1.4.0.min.css">
+	 <link rel="stylesheet" href="css/jquery.mobile-1.4.0.min.css">
+	<!-- <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"> -->
 	<link rel="stylesheet" href="css/datebox/jqm-datebox.min.css">
 
 	<link rel="shortcut icon" href="../favicon.ico">
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/jquery.mobile-1.4.0.min.js"></script>
+	<!--<script src="js/jquery.mobile-1.3.2.min.js"></script>-->
 
 	<script src="js/datebox/jqm-datebox.core.min.js"></script>
 	<script src="js/datebox/jqm-datebox.mode.datebox.min.js"></script>
-
-
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
 	<!-- este borrar -->
 	<!--<script type="text/javascript" src="js/datebox/jqm-datebox.mode.calbox.min.js"></script>-->
 
@@ -122,9 +123,19 @@
 			<div class="ui-block-b">
 
 				<a href="#" data-role="button" data-icon="calendar" id="calendario"></a>
-
+<!-- <div class="ui-input-text ui-shadow-inset ui-corner-all ui-btn-shadow ui-body-b">
+<input type="text" id="ctrlgrp" name="themes" data-role="datebox" data-theme="b" data-options='{"centerHoriz": true, "mode": "datebox", "themeHeader":"d", "themeButton":"b"}' class="ui-input-text ui-body-b ui-corner-all ui-icon-datebox" readonly="readonly">	
+</div> -->
 				<div style="display:none">
-					<input name="ctrlgrp" id="ctrlgrp" type="text" data-role="datebox" data-options='{"mode": "datebox", "centerHoriz": true, "useNewStyle":true, "beforeToday": true}' class="ui-input-text ui-body-c ui-corner-all ui-icon-datebox" readonly="readonly">
+
+
+
+					 <!-- <input name="ctrlgrp" id="ctrlgrp" type="text" data-role="datebox" data-options='{"mode": "datebox", "centerHoriz": true, "useNewStyle":true, "beforeToday": true}' class="ui-input-text ui-body-c ui-corner-all ui-icon-datebox" readonly="readonly">  -->
+
+					 <input name="dynend" type="text" data-role="datebox" data-options='{"mode": "calbox", "centerHoriz": true, "useNewStyle":true, "beforeToday": true}' id="ctrlgrp" />
+
+					<!-- <input type="text" id="ctrlgrp" name="themes" data-role="datebox" data-theme="b" data-options='{"centerHoriz": true, "mode": "datebox", "themeHeader":"d", "themeButton":"b"}' class="ui-input-text ui-body-b ui-corner-all ui-icon-datebox" readonly="readonly"> -->
+
   					<!-- <input name="ctrlgrp" type="text" data-role="datebox"
   					   						 data-options='{"mode": "datebox", "centerHoriz": true, "useNewStyle":true}' id="ctrlgrp"/> -->
 				</div>
@@ -326,15 +337,34 @@ Las boletas que jueguen con bolillero de Salta participan con la misma modalidad
 });*/
 //console.log(getdays());
 	$('#calendario').on('vclick', function() {
-		
+
   		$('#ctrlgrp').datebox('open');
+		$('#ctrlgrp').datebox({'maxDays': 2});
+		$('#ctrlgrp').datebox('applyMinMax');
+		//console.log(getdays());
+		//$('#ctrlgrp').datebox('refresh');
   		//$('#ctrlgrp').datebox({'maxDays': getdays()});
   		//$('#ctrlgrp').datebox({'minDays': getdays()});
 	});
+
+
+	
+
 	$('#ctrlgrp').bind('change', function(e,p) {
   		//alert($(this).val());
   		controller_mostrarSorteos_modificarFecha(fechaUtils_getDate($(this).val()+' 00:00:00.000'));
 	});
+}
+
+function getdays() { 
+  var rightnow = new Date()
+    today = new Date(rightnow.getFullYear(), rightnow.getMonth(), rightnow.getDate(), 0,0,0,0)
+    maxdate = new Date(2014, 1, 15, 0,0,0,0)
+    console.log(maxdate);
+
+  daysuntil = ( maxdate - today ) / ( 1000 * 60 * 60 * 24 )
+
+  return parseInt(daysuntil,10)
 }
 
 /*	function getmin() { 
