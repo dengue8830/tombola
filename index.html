@@ -268,12 +268,13 @@ Las boletas que jueguen con bolillero de Salta participan con la misma modalidad
 <script type="text/javascript">
 	configurarCalendario();
 
-	var ONLINE = true;
+	//var ONLINE = true;
 	var URL = 'http://192.168.0.103/appPhoneServer/reply.php';
 
 	var db = window.openDatabase("TombolaBD", "1.0", "TombolaBD", 200000);
 
-	var fecha = new Date();
+	var fechaNavegacion = new Date();
+	//var fechaHoy = new Date();
 	//$('#calendario').text(fechaUtils_format(fecha, '/,dd-mm-yyyy'));
 
 	var arrayDivsTablas = new Array();
@@ -281,9 +282,16 @@ Las boletas que jueguen con bolillero de Salta participan con la misma modalidad
 	arrayDivsTablas.push($('#tablas_2'));
 	arrayDivsTablas.push($('#tablas_3'));
 	arrayDivsTablas.push($('#tablas_4'));
+	//var arrayContador;
+	//localStorage
 //ejecutar('drop table sorteos');
-	connection_cargarBD(controller_mostrarSorteos_modificarFecha.bind(null, fecha), connection_createTables);
-//controller_mostrarSorteos_modificarFecha(fecha);
+//	localStorage.clear();
+	connection_cargarBD(controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_createTables);
+
+
+
+	//connection_cargarBD(contadorDAO_getContador.bind(null, null), connection_createTables);
+
 	//getDataHTML();
 	
 	//cargarSuenios();

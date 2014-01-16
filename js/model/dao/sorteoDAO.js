@@ -44,7 +44,7 @@ function sorteoDao_getByFecha_online(fecha, callBackOk, callbackError){
 }*/
 
 function sorteoDao_getByFecha_offline(fecha, callBackOk, callbackError){
-  console.log('error al online... intentando offline');
+  console.log('intentando offline');
   //sort.id_sorteo, sort.nombre, sort.num, strftime('%d-%m-%Y %H:%M:%f',sort.fecha) as fecha, sort.lugar, sort.numeros
     db.transaction(function(tx) {
           tx.executeSql("select sort.* from sorteos as sort where strftime('%d/%m/%Y',sort.fecha) = ? order by sort.fecha asc",[fechaUtils_format(fecha, '/,dd-mm-yyyy')], function(tx, result){
@@ -52,13 +52,15 @@ function sorteoDao_getByFecha_offline(fecha, callBackOk, callbackError){
             var dataset = result.rows;
             var items = new Array();
 
-              for (var i = 0; i < dataset.length; i++) {
-                items.push(dataset.item(i));
-              }
+            for (var i = 0; i < dataset.length; i++) {
+              items.push(dataset.item(i));
+            }
 
-            //callBackOk.pop()(items, callBackOk, callbackError); 
+            //callBackOk.pop()(items, callBackOk, callbackError);
             console.log('logrado offline');
-            prepararSorteos(items);
+            $('#div_msj').show();
+            console.log(fechaUtils_format(fecha, '/,dd-mm-yyyy')+': '+dataset.length);
+            tombola_service_prepararSorteos(items);
             
           }, function (tx, error){
             alert(error.message);
@@ -68,6 +70,7 @@ function sorteoDao_getByFecha_offline(fecha, callBackOk, callbackError){
 }
 
 function sorteoDao_getByFecha_online(fecha, callBackOk, callbackError){
+  console.log('intentando online...');
   $.ajax({ 
             url: URL,
             type:'POST', 
@@ -75,6 +78,7 @@ function sorteoDao_getByFecha_online(fecha, callBackOk, callbackError){
             dataType:'json', 
             error:function(jqXHR,text_status,strError){ 
                 $('#div_msj').show();
+                console.log('error en el online...');
                 sorteoDao_getByFecha_offline(fecha);
               }, 
             timeout:60000, 
@@ -82,7 +86,29 @@ function sorteoDao_getByFecha_online(fecha, callBackOk, callbackError){
                 //callBackOk.pop()(data, callBackOk, callbackError);
                 console.log('logrado online');
                 $('#div_msj').hide();
-                prepararSorteos(data);
+
+                if(tombolaService_getCantidadSorteosByFecha(fecha) == data.length){
+                  console.log('la cantidad de datos es la misma en local que en online');
+                  //Hay retraso o algo paso que no se cargo el ultimo sorteo en online y no hay nada que actualizar localmente
+                  tombola_service_prepararSorteos(data);
+                }else{
+                  //Actualizacion del localStorage
+                  console.log('actualizando localStorage');
+                  localStorage.setItem(fechaUtils_format(fecha, '/,dd-mm-yyyy'), data.length.toString());
+                  //Actualizacion de la tabla
+                  insertOrUpdateSorteos(data);
+                }
+
+                tombola_service_prepararSorteos(data);
               }
         });
+}
+
+function insertOrUpdateSorteos(data){
+  db.transaction(function(tx) {
+    $.each(data, function( i, item ) {
+      fechaUtils_getDate(item.fecha)
+      tx.executeSql('insert or ignore into sorteos (id_sorteo, nombre, num, fecha, lugar, numeros) values (?, ?, ?, ?, ?, ?) ', [item.id_sorteo, item.nombre, item.num, fechaUtils_getFromatedDateYYYYMMDDbyFechaString(item.fecha), item.lugar, item.numeros], null, connection_error);
+    });
+  });
 }
