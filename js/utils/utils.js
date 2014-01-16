@@ -123,7 +123,7 @@ console.log(stringDate);
 }
 
 //se usar para guardar en BD
-function fechaUtils_getFromatedDateYYYYMMDD(date){
+function fechaUtils_getFromatedDateYYYYMMDDbyFechaDate(date){
   var yyyy = date.getFullYear().toString();                                    
   var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based         
   var dd  = date.getDate().toString();             
