@@ -33,21 +33,64 @@ function tombolaService_getSorteosDiezDias(fechaSorteo){
 }
 
 function tombolaService_getSorteosByFecha(fechaSorteo, callBackOk, callbackError){
-
-	//if(ONLINE){
-		console.log('intentando online...');
-
+console.log('hay '+tombolaService_getCantidadSorteosByFecha(fechaSorteo)+' sorteos en local para esta fechaNavegacion y deberian haber: '+tombolaService_getCantidadEsperadaDeSorteosSegunHora(fechaSorteo));
+	if(tombolaService_getCantidadSorteosByFecha(fechaSorteo)
+	 == tombolaService_getCantidadEsperadaDeSorteosSegunHora(fechaSorteo)){
+		//callBackOk.push(prepararSorteos);
+		console.log('son iguales, yendo a offline');
+		sorteoDao_getByFecha_offline(fechaSorteo);
+	}else{
+		console.log('no son iguales, yendo a online');
+		//creo que si no hay internet agarra igual el caso del error y va al offline, no seria necesario controlar su hay conexion
 		//callBackOk.push(prepararSorteos);
 		sorteoDao_getByFecha_online(fechaSorteo);
-	/*}else{
-		console.log('offline');
-		
-		callBackOk.push(prepararSorteos);
-		sorteoDao_getByFecha_offline(fechaSorteo, callBackOk, callbackError);
-	}*/
+	}
 }
 
-function prepararSorteos(data, callBackOk, callbackError){
+function tombolaService_getCantidadSorteosByFecha(fecha){
+	var fechaStr = fechaUtils_format(fecha, '/,dd-mm-yyyy');
+	return localStorage.getItem(fechaStr) ? localStorage.getItem(fechaStr) : 0;
+}
+
+function tombolaService_getCantidadEsperadaDeSorteosSegunHora(fechaSorteo){
+	var ahora = new Date();
+	/*var horaPrimerSorteo = new Date(ahora.getFullYear(), date.getMonth()+1, date.getDate(), 11, 30, 0, 0);
+	var horaPrimerSorteo = new Date(ahora.getFullYear(), date.getMonth()+1, date.getDate(), 11, 30, 0, 0);
+	var horaPrimerSorteo = new Date(ahora.getFullYear(), date.getMonth()+1, date.getDate(), 11, 30, 0, 0);
+	var horaPrimerSorteo = new Date(ahora.getFullYear(), date.getMonth()+1, date.getDate(), 11, 30, 0, 0);*/
+
+	//cuarto sorteo
+	fechaSorteo.setHours(22);
+	fechaSorteo.setMinutes(30);
+	if(ahora > fechaSorteo){
+		return 4;
+	}
+
+	//tercer sorteo
+	fechaSorteo.setHours(17);
+	fechaSorteo.setMinutes(30);
+	if(ahora > fechaSorteo){
+		return 3;
+	}
+
+	//segundo sorteo
+	fechaSorteo.setHours(14);
+	fechaSorteo.setMinutes(0);
+	if(ahora > fechaSorteo){
+		return 2;
+	}
+
+	//primer sorteo
+	fechaSorteo.setHours(11);
+	fechaSorteo.setMinutes(30);
+	if(ahora > fechaSorteo){
+		return 1;
+	}
+
+	return 0;
+}
+
+function tombola_service_prepararSorteos(data, callBackOk, callbackError){
     var sorteos = new Array();
 
 	$.each(data, function( i, item ) {

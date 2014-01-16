@@ -57,7 +57,7 @@ function controller_mostrarSorteos_pintarSorteos(arrayDivs, arraySorteosVos){
 		//element.find('h3').remove();
 
 		if(element.find('h3').text() == ''){
-			element.find('h3').text(unSorteo.nombre+' - '+unSorteo.lugar);//+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy')
+			element.find('h3').text(unSorteo.nombre+' - '+unSorteo.lugar+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy'));//+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy')
 		}else{
 			element.find('.ui-btn-inherit').text(unSorteo.nombre+' - '+unSorteo.lugar+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy'));//+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy')
 		}
@@ -170,21 +170,21 @@ function controller_mostrarSorteos_pintarSorteos(arrayDivs, arraySorteosVos){
 function controller_mostrarSorteos_modificarFecha(nuevaFecha){
 
 	if(nuevaFecha instanceof Date){
-		fecha = nuevaFecha;
+		fechaNavegacion = nuevaFecha;
 	}else{
 		if(nuevaFecha == 'mas'){
-			fecha.setDate(fecha.getDate()+1);
+			fechaNavegacion.setDate(fechaNavegacion.getDate()+1);
 		}else{
-			fecha.setDate(fecha.getDate()-1);
+			fechaNavegacion.setDate(fechaNavegacion.getDate()-1);
 		}
 	}
 	//fecha.setDate(fecha.getDate()-1);
-	$('#calendario').text(fechaUtils_format(fecha, '/,dd-mm-yyyy'));
+	$('#calendario').text(fechaUtils_format(fechaNavegacion, '/,dd-mm-yyyy'));
 
-	var pila = new Array();
-	pila.push(controller_mostrarSorteos_pintarSorteos);
+	//var pila = new Array();
+	//pila.push(controller_mostrarSorteos_pintarSorteos);
 
-	tombolaService_getSorteosByFecha(fecha, pila, connection_error);
+	tombolaService_getSorteosByFecha(fechaNavegacion, null, connection_error);
 	//var sorteos = tombolaService_getSorteosByFecha(fecha);
 	//controller_mostrarSorteos_pintarSorteos(arrayDivsTablas, sorteos);
 

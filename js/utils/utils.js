@@ -118,17 +118,47 @@ function fechaUtils_getDate(stringDate){
   var seg = segSplit[0];
   var mil = segSplit[1];
 console.log(stringDate);
-console.log(anio+','+mes+','+dia+','+hora+','+min+','+seg+','+mil);
+//console.log(anio+','+mes+','+dia+','+hora+','+min+','+seg+','+mil);
   return new Date(anio, mes-1, dia, hora, min, seg, mil);
 }
 
 //se usar para guardar en BD
-function fechaUtils_getFromatedDateYYYYMMDD(date){
+function fechaUtils_getFromatedDateYYYYMMDDbyFechaDate(date){
   var yyyy = date.getFullYear().toString();                                    
   var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based         
   var dd  = date.getDate().toString();             
                             
   return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
+}
+
+function fechaUtils_getFromatedDateYYYYMMDDbyFechaString(stringDate){
+  var split = stringDate.split(' ');
+  var fechaSplit;
+
+  if(split[0].indexOf('-') != -1){
+    fechaSplit = split[0].split('-');
+  }else{
+    fechaSplit = split[0].split('/');
+  }
+  
+  if(fechaSplit[0].length == 2){//dd-mm-yyyy
+    var dia = fechaSplit[0];
+    var anio = fechaSplit[2];
+  }else{//yyyy-mm-dd
+    var dia = fechaSplit[2];
+    var anio = fechaSplit[0];
+  }
+
+  var mes = fechaSplit[1];
+
+  var horaSplit = split[1].split(':');
+  var hora = horaSplit[0];
+  var min = horaSplit[1];
+  var segSplit = horaSplit[2].split('.');
+  var seg = segSplit[0];
+  var mil = segSplit[1];
+
+  return anio+'-'+mes+'-'+dia+' '+hora+':'+min+':'+seg+'.'+mil;
 }
 
 /*function fechaUtils_getDateJSfromDateBBDD(fechaStr){
