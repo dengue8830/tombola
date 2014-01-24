@@ -1,94 +1,39 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Default theme - jQuery Mobile Demos</title>
-	 <link rel="stylesheet" href="css/jquery.mobile-1.4.0.min.css">
-	<!-- <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"> -->
+	<title>Tombola jujuy</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.3.2.css">
+
 	<link rel="stylesheet" href="css/datebox/jqm-datebox.min.css">
-
-	<link rel="shortcut icon" href="../favicon.ico">
 	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/jquery.mobile-1.4.0.min.js"></script>
-	<!--<script src="js/jquery.mobile-1.3.2.min.js"></script>-->
-
+	<script src="js/jquery.mobile-1.3.2.min.js"></script>
 	<script src="js/datebox/jqm-datebox.core.min.js"></script>
 	<script src="js/datebox/jqm-datebox.mode.datebox.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
-	<!-- este borrar -->
-	<!--<script type="text/javascript" src="js/datebox/jqm-datebox.mode.calbox.min.js"></script>-->
-
-
-	<script>
-		$( document ).on( "pagecreate", function() {
-			$( "#theme-selector input" ).on( "change", function( event ) {
-				var themeClass = $( "#theme-selector input:checked" ).attr( "id" );
-
-				$( "#testpage" ).removeClass( "ui-page-theme-a ui-page-theme-b" ).addClass( "ui-page-theme-" + themeClass );
-				$( "#ui-body-test" ).removeClass( "ui-body-a ui-body-b" ).addClass( "ui-body-" + themeClass );
-				$( "#ui-bar-test, #ui-bar-form" ).removeClass( "ui-bar-a ui-bar-b" ).addClass( "ui-bar-" + themeClass );
-				$( ".ui-collapsible-content" ).removeClass( "ui-body-a ui-body-b" ).addClass( "ui-body-" + themeClass );
-				$( ".theme" ).text( themeClass );
-			});
-			$( "#opt-shadow input" ).on( "change", function( event ) {
-				if ( $( "#on" ).prop( "checked" ) ) {
-					$( "#testpage" ).removeClass( "noshadow" );
-				} else if ( $( "#off" ).prop( "checked" ) ) {
-					$( "#testpage" ).addClass( "noshadow" );
-				}
-			});
-			$( "#opt-iconshadow input" ).on( "change", function( event ) {
-				if ( $( "#off1" ).prop( "checked" ) ) {
-					$( "#testpage" ).removeClass( "ui-shadow-icon" );
-				} else if ( $( "#on1" ).prop( "checked" ) ) {
-					$( "#testpage" ).addClass( "ui-shadow-icon" );
-				}
-			});
-			$( "#opt-navbars input" ).on( "change", function( event ) {
-				if ( $( "#show" ).prop( "checked" ) ) {
-					$( "#testpage .ui-navbar" ).show();
-					$( "#testpage .ui-footer h4" ).hide();
-				} else if ( $( "#hide" ).prop( "checked" ) ) {
-					$( "#testpage .ui-navbar" ).hide();
-					$( "#testpage .ui-footer h4" ).show();
-				}
-			});
-		});
-	</script>
-	<style>
-		.noshadow * {
-			-webkit-box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			box-shadow: none !important;
-		}
-		form.ui-mini .ui-field-contain fieldset.ui-controlgroup legend small {
-			color: #666;
-		}
-	</style>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>	
 </head>
 <body>
-<div data-role="page" id="page">
+<!-- page -->
+<div data-role="page" data-theme="b" id="page">
 	<!-- cabecera -->
-	<div data-role="header" data-theme="a" >
+	<div data-role="header" data-theme="b" >
 		<h3> Tombola Jujeña</h3>
 
-		<a href="#pageInfo" class="ui-btn ui-icon-info ui-btn-icon-notext ui-corner-all" data-role="button" data-transition="slidefade" data-direction="reverse">Info</a>
-		<a href="#pageSuenios" class="ui-btn ui-icon-cloud ui-btn-icon-notext ui-corner-all" data-theme="b" data-transition="slidefade">Sueños</a>
+		<a href="#pageInfo" data-icon="info" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc"  data-transition="fade" data-direction="reverse">info</a>
+		<a href="#pageSuenios" data-icon="grid" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc"  data-transition="fade">cabalas</a>
 	<div data-role="navbar"></div>			
 				
 				
 	</div>
 	<!-- content -->
-	<div data-role="content" id="contenedor" data-theme="c">
-		<!-- <div class="ui-bar ui-bar-a" style="height:60px"><p id="">Block A</p></div> -->
+	<div data-role="content">
 
 		<div class="ui-bar ui-bar-a" data-role="content" style="display:none" id="div_msj">
 				<p>Sin conexión, consultando localmente</p>
 		</div>
-		<!-- <div>Sin conexión a internet... usando datos locales (última actualización xx/xx/xxxx xx:xx)</div> -->
-
-		<div data-role="collapsible-set" data-content-theme="a" id="acordion">
+		
+		<div data-role="collapsible-set" data-content-theme="b" id="acordion">
 			
 			<div data-role="collapsible"  id="tablas_1">
 				<h3></h3>
@@ -113,14 +58,10 @@
 		</div>
 	</div>
 	<!-- footer -->
-	<div data-role="footer" data-position="fixed">
-		
-		<!-- <div data-role="controlgroup" data-type="horizontal"> -->
-		<div class="ui-grid-b">
-
-			<div class="ui-block-a">
-				<a href="#" data-role="button" class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" id="restar_dia" onclick="controller_mostrarSorteos_modificarFecha('menos');"></a> </div>
-			<div class="ui-block-b">
+	<div data-role="footer" data-position="fixed" data-theme="b">
+		<fieldset class="ui-grid-b">
+   			<div class="ui-block-a" align="left"><a href="#" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc" id="restar_dia" onclick="controller_mostrarSorteos_modificarFecha('menos');"></a></div>
+    		<div class="ui-block-b">
 
 				<a href="#" data-role="button" data-icon="calendar" id="calendario"></a>
 <!-- <div class="ui-input-text ui-shadow-inset ui-corner-all ui-btn-shadow ui-body-b">
@@ -141,140 +82,117 @@
 				</div>
 
 			</div>
-			<div class="ui-block-c">
-				<a href="#" data-role="button" class="ui-btn ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" id="aumentar_dia" onclick="controller_mostrarSorteos_modificarFecha('mas');"></a>
-			</div>
-	   </div>
-			<!-- <input onclick="connect(this.value)" type="button" value="cars" /> -->
+    		<div class="ui-block-c" align="right"><a href="#" data-role="button" data-icon="arrow-r" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc" id="aumentar_dia" onclick="controller_mostrarSorteos_modificarFecha('mas');"></a></div>
+		</fieldset>
+
 	</div>
 </div>
 
 
-
-
-
-
-
-
-<div data-role="page" data-theme="a" id="pageSuenios">
+<div data-role="page" data-theme="b" id="pageSuenios">
 	<!-- cabecera -->
-	<div data-role="header" data-theme="a" >
+	<div data-role="header" data-theme="b" >
 		<h3>Significados</h3>
 
-		<a href="#page" class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" data-role="button" data-transition="slidefade" data-direction="reverse">Buscar</a>
+		<a href="#page" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc" data-transition="fade" data-direction="reverse"></a>
 	
 				
 				
 	</div>
 	<!-- content -->
 	<div data-role="content" id="contenedor">
-		<div data-role="collapsible-set" data-theme="a" data-content-theme="b">
+		<div data-role="collapsible-set" data-theme="b" data-content-theme="b">
     	<div data-role="collapsible">
 	    	<h2 onclick="pagiaCabalasController_cargarCabalas('ul_suenios', 'suenios');">Sueños</h2>
-        	<ul data-role="listview" data-filter="true" data-filter-theme="a" data-divider-theme="b" id="ul_suenios">
+        	<ul data-role="listview" data-filter="true" data-filter-theme="d" data-divider-theme="b" id="ul_suenios">
             	
 	        </ul>
 	    </div>
 	    <div data-role="collapsible">
 	    	<h2 onclick="pagiaCabalasController_cargarCabalas('ul_nombres', 'nombres');">Nombres</h2>
-        	<ul data-role="listview" data-filter="true" data-filter-theme="a" data-divider-theme="b" id="ul_nombres">
+        	<ul data-role="listview" data-filter="true" data-filter-theme="d" data-divider-theme="b" id="ul_nombres">
 
 	        </ul>
 	    </div>
 	   <div data-role="collapsible">
 	    	<h2 onclick="pagiaCabalasController_cargarCabalas('ul_sensaciones', 'sensaciones');">Sensaciones</h2>
-        	<ul data-role="listview" data-filter="true" data-filter-theme="a" data-divider-theme="b" id="ul_sensaciones">
+        	<ul data-role="listview" data-filter="true" data-filter-theme="d" data-divider-theme="b" id="ul_sensaciones">
 
 	        </ul>
 	    </div>
 	    <div data-role="collapsible">
 	    	<h2 onclick="pagiaCabalasController_cargarCabalas('ul_flores', 'flores');">Flores</h2>
-        	<ul data-role="listview" data-filter="true" data-filter-theme="a" data-divider-theme="b" id="ul_flores">
+        	<ul data-role="listview" data-filter="true" data-filter-theme="d" data-divider-theme="b" id="ul_flores">
 
 	        </ul>
 	    </div>
 	    <div data-role="collapsible">
 	    	<h2 onclick="pagiaCabalasController_cargarCabalas('ul_oficios', 'oficios');">Oficios</h2>
-        	<ul data-role="listview" data-filter="true" data-filter-theme="a" data-divider-theme="b" id="ul_oficios">
+        	<ul data-role="listview" data-filter="true" data-filter-theme="d" data-divider-theme="b" id="ul_oficios">
 
 	        </ul>
 	    </div>
 	    <div data-role="collapsible">
 	    	<h2 onclick="pagiaCabalasController_cargarCabalas('ul_animales', 'animales');">Animales</h2>
-        	<ul data-role="listview" data-filter="true" data-filter-theme="a" data-divider-theme="b" id="ul_animales">
+        	<ul data-role="listview" data-filter="true" data-filter-theme="d" data-divider-theme="b" id="ul_animales">
 
 	        </ul>
 	    </div>
 	    <div data-role="collapsible">
 	    	<h2 onclick="pagiaCabalasController_cargarCabalas('ul_fechas', 'fechas');">Fechas para Recordar</h2>
-        	<ul data-role="listview" data-filter="true" data-filter-theme="a" data-divider-theme="b" id="ul_fechas">
-
+        	<ul data-role="listview" data-filter="true" data-filter-theme="d" data-divider-theme="b" id="ul_fechas">
 	        </ul>
 	    </div>
     
-    
-	</div>
+    	</div>
 	</div>
 	<!-- footer -->
-	<div data-role="footer" data-position="fixed">
-		
-		<!-- <div data-role="controlgroup" data-type="horizontal"> -->
-			footer
-		<!-- </div> -->
-			<!-- <input onclick="connect(this.value)" type="button" value="cars" /> -->
+	<div data-role="footer" data-theme="b" data-position="fixed">
+		<div class="ui-block-a" align="center"> Banco de Accion Social </div>
 	</div>
 </div>
 
 
 <!-- page de Informacion -->
-<div data-role="page" data-theme="a" id="pageInfo">
+<div data-role="page" data-theme="b" id="pageInfo">
 	<!-- cabecera -->
-	<div data-role="header" data-theme="a" >
+	<div data-role="header" data-theme="b" >
 		<h3>Información</h3>
 
-		<a href="#"></a>
-		<a href="#page" class="ui-btn ui-icon-arrow-r  ui-btn-icon-notext ui-corner-all" data-theme="b" data-transition="slidefade" ></a>
-	<div data-role="navbar"></div>			
+		<a href="#page" data-role="button" data-icon="arrow-r" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-btn-right ui-icon-alt ui-icon-nodisc" data-transition="fade"></a>
+	
 				
 				
 	</div>
 	<!-- content -->
 	<div data-role="content">
-		
 		<h3>Si Jugó Tombola Jujeña, no tire su boleta</h3>
-<p>
-Premios por Aproximacion: Es una posibilidad mas que usted tiene para ganar. El numero de tres cifras anterior y posterior al Primer Premio de la Tombola Jujeña tiene premio por aproximacion y se paga 10 veces el valor de la jugada.
-
-Las boletas que jueguen con bolillero de Salta participan con la misma modalidad de premios por aproximacion.
-</p>
+		<p>Premios por Aproximacion: Es una posibilidad mas que usted tiene para ganar. El numero de tres cifras anterior y posterior al Primer Premio de la Tombola Jujeña tiene premio por aproximacion y se paga 10 veces el valor de la jugada.
+			las boletas que jueguen con bolillero de Salta participan con la misma modalidad de premios por aproximacion.
+		</p>
 	</div>
 	<!-- footer -->
-	<div data-role="footer" data-position="fixed">
-		
-		Banco de Accion Social
-			
+	<div data-role="footer" data-theme="b" data-position="fixed" >
+			<div class="ui-block-a" align="center"> Banco de Accion Social </div>
 	</div>
 </div>
-
-<script src="js/model/vo/sorteoVO.js"></script>
 
 <script src="js/utils/utils.js"></script>
 <script src="js/connection/connection.js"></script>
 <script src="js/model/dao/sorteoDAO.js"></script>
 <script src="js/controller/paginaCabalasController.js"></script>
-
+<script src="js/model/vo/sorteoVO.js"></script>
 <script src="js/controller/paginaController.js"></script>
 <script src="js/businesslogic/tombolaService.js"></script>
 <script type="text/javascript">
 	configurarCalendario();
 
-	//var ONLINE = true;
+	var ONLINE = true;
 	var URL = 'http://192.168.0.103/appPhoneServer/reply.php';
 
 	var db = window.openDatabase("TombolaBD", "1.0", "TombolaBD", 200000);
 
-	var fechaNavegacion = new Date();
-	//var fechaHoy = new Date();
+	var fecha = new Date();
 	//$('#calendario').text(fechaUtils_format(fecha, '/,dd-mm-yyyy'));
 
 	var arrayDivsTablas = new Array();
@@ -282,16 +200,9 @@ Las boletas que jueguen con bolillero de Salta participan con la misma modalidad
 	arrayDivsTablas.push($('#tablas_2'));
 	arrayDivsTablas.push($('#tablas_3'));
 	arrayDivsTablas.push($('#tablas_4'));
-	//var arrayContador;
-	//localStorage
 //ejecutar('drop table sorteos');
-//	localStorage.clear();
-	connection_cargarBD(controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_createTables);
-
-
-
-	//connection_cargarBD(contadorDAO_getContador.bind(null, null), connection_createTables);
-
+	connection_cargarBD(controller_mostrarSorteos_modificarFecha.bind(null, fecha), connection_createTables);
+//controller_mostrarSorteos_modificarFecha(fecha);
 	//getDataHTML();
 	
 	//cargarSuenios();
