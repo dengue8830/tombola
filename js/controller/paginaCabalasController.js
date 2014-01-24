@@ -35,11 +35,25 @@ function pagiaCabalasController_cargarCabalas(id, cabala){
 			}
 		}
 	}
-
+//<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-li-has-icon ui-first-child ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit"><img src="images/gf.png" alt="France" class="ui-li-icon ui-corner-none ui-li-thumb">France <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">4</span></a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+//<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-first-child ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">Acura</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
 	$.each(arrayCabala, function( i, unaCabala ) {
 		var split = unaCabala.split(';');
-		$('#'+id).append('<li class="ui-li-static ui-body-inherit ui-li-has-count ui-first-child">'+split[1]+'<span class="ui-li-count ui-body-inherit">'+split[0]+'</span></li>');
-//		$('#'+id).append('<li>'+split[1]+'<span class="ui-li-count">'+split[0]+'</span></li>');
+		//$('#'+id).append('<li class="ui-li-static ui-body-inherit ui-li-has-count ui-first-child">'+split[1]+'<span class="ui-li-count ui-body-inherit">'+split[0]+'</span></li>');
+
+//$('#'+id).append('<li data-corners="false" data-shadow="false" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-li-has-count ui-li-has-icon ui-first-child ui-btn-up-c">'
+		$('#'+id).append('<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right  ui-li-has-count ui-li ui-first-child ui-btn-up-c">'
+			+'<div class="ui-btn-inner ui-li">'
+				+'<div class="ui-btn-text">'
+					+'<a href="#" class="ui-link-inherit">'
+						//+'<img src="images/gf.png" alt="France" class="ui-li-icon ui-corner-none ui-li-thumb">'
+						+split[1]
+						+'<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">'+split[0]+'</span>'
+					+'</a>'
+				+'</div>'
+				//+'<span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>'
+			+'</div>'
+		+'</li>');
 	});
 //	$('#'+id).refresh();
 }

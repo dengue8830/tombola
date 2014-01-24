@@ -1,19 +1,6 @@
 function controller_mostrarSorteos_pintarSorteos(arrayDivs, arraySorteosVos){
-	//var arraySorteosVos = tombolaService_getSorteosDiezDias();
+
 	if(arraySorteosVos.length == 0 ){
-		/*for (var i = 0; i < arrayDivs.length; i++) {
-			arrayDivs[i].hide();
-		}*/
-		//$('#acordion').hide();
-		/*var e = document.getElementById('div_msj');
-		if(e.style.display == 'block')
-          e.style.display = 'none';
-       else
-          e.style.display = 'block';*/
-       //$('#div_msj').show();
-		//$('#div_msj').attr('style.display ', 'block');
-		//document.getElementById('div_msj').style.display = 'block';
-		//$('#div_msj').append('<p>No hay resultados para este día</p>');
 		var unSorteoVo = new SorteoVO(0, 'La Primera', 0, null, 'Jujuy', null);
 		arraySorteosVos.push(unSorteoVo);
 		unSorteoVo = new SorteoVO(0, 'Matutina', 0, null, 'Salta', null);
@@ -23,16 +10,12 @@ function controller_mostrarSorteos_pintarSorteos(arrayDivs, arraySorteosVos){
 		unSorteoVo = new SorteoVO(0, 'Nocturna', 0, null, 'Cordoba', null);
 		arraySorteosVos.push(unSorteoVo);
 
-		arraySorteosVos.push();
 		for (var i = 0; i < arrayDivs.length; i++) {
 			var element = arrayDivs[i];
 			var unSorteo = arraySorteosVos[i];
 
-			if(element.find('h3').text() == ''){
-			element.find('h3').text(unSorteo.nombre+' - '+unSorteo.lugar+' (vacío)');
-		}else{
-			element.find('.ui-btn-inherit').text(unSorteo.nombre+' - '+unSorteo.lugar+' (vacío)');
-		}
+			//Puede que haya que agregar un span, ver en el demo de collapsible set
+			element.find('.ui-btn-text').text(unSorteo.nombre+' - '+unSorteo.lugar+' (vacío)');
 	
        		element.find('div').children().remove();
        		element.find('div').append('<p>no hya datos para hoy</p>');
@@ -56,11 +39,9 @@ function controller_mostrarSorteos_pintarSorteos(arrayDivs, arraySorteosVos){
 		//element.append('<div data-role="collapsible">');
 		//element.find('h3').remove();
 
-		if(element.find('h3').text() == ''){
-			element.find('h3').text(unSorteo.nombre+' - '+unSorteo.lugar+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy'));//+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy')
-		}else{
-			element.find('.ui-btn-inherit').text(unSorteo.nombre+' - '+unSorteo.lugar+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy'));//+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy')
-		}
+
+		element.find('.ui-btn-text').text(unSorteo.nombre+' - '+unSorteo.lugar+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy'));//+' - '+fechaUtils_format(unSorteo.fecha, '/,dd-mm-yyyy')
+
 		
 		//element.append('<h3 >'+unSorteo.nombre+' - '+unSorteo.lugar+'</h3>').trigger("create");
 		//element.find('h3').text(unSorteo.nombre+' - '+unSorteo.lugar).trigger('create');
