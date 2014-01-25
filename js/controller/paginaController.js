@@ -160,7 +160,7 @@ function controller_mostrarSorteos_modificarFecha(nuevaFecha){
 		}
 	}
 	//fecha.setDate(fecha.getDate()-1);
-	$('#calendario').find('.ui-btn-text').text(fechaUtils_format(fechaNavegacion, '/,dd-mm-yyyy'));
+	$('#calendario').text(fechaUtils_format(fechaNavegacion, '/,dd-mm-yyyy'));
 
 	//var pila = new Array();
 	//pila.push(controller_mostrarSorteos_pintarSorteos);
