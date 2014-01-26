@@ -159,8 +159,9 @@ function controller_mostrarSorteos_modificarFecha(nuevaFecha){
 			fechaNavegacion.setDate(fechaNavegacion.getDate()-1);
 		}
 	}
-	//fecha.setDate(fecha.getDate()-1);
-	$('#calendario').text(fechaUtils_format(fechaNavegacion, '/,dd-mm-yyyy'));
+
+	//$('#calendario').text(fechaUtils_format(fechaNavegacion, '/,dd-mm-yyyy'));
+	$('#calendario').find('.ui-btn-text').text(fechaUtils_format(fechaNavegacion, '/,dd-mm-yyyy'));
 
 	//var pila = new Array();
 	//pila.push(controller_mostrarSorteos_pintarSorteos);
