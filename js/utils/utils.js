@@ -180,3 +180,49 @@ function getStringPrimeraLetraMayus(txt){
   }
     return txt.charAt(0).toUpperCase() + txt.substr(1, indexof-1).toLowerCase()+txt.charAt(indexof)+txt.charAt(indexof+1).toUpperCase()+txt.substr(indexof+2).toLowerCase();
 }
+
+/*
+* Funcion que compara dos fechas para saber si son iguales, recibe las dos fechas a comparar
+* y una cadena con los campos que se van a comparar:
+*
+* [d]-[m]-[y]-[h]-[mi]-[s]-[ms]
+*
+*/
+function fechaUtils_compararFechasByCampos(fecha1, fecha2, camposComparacion){
+  var condiciones = '';
+
+  if(camposComparacion.indexOf('d') != -1){
+    condiciones += fecha1.getDate() == fecha2.getDate();
+  }
+  
+  if(camposComparacion.indexOf('m') != -1){
+    condiciones += fecha1.getMonth() == fecha2.getMonth();
+  }
+  
+  if(camposComparacion.indexOf('y') != -1){
+    condiciones += fecha1.getYear() == fecha2.getYear();
+  }
+  
+  if(camposComparacion.indexOf('h') != -1){
+    condiciones += fecha1.getHours() == fecha2.getHours();
+  }
+
+  if(camposComparacion.indexOf('mi') != -1){
+    condiciones += fecha1.getMinutes() == fecha2.getMinutes();
+  }
+  
+  if(camposComparacion.indexOf('s') != -1){
+    condiciones += fecha1.getSeconds() == fecha2.getSeconds();
+  }
+  
+  if(camposComparacion.indexOf('ms') != -1){
+    condiciones += fecha1.getMilliseconds() == fecha2.getMilliseconds();
+  }
+  
+
+  if(condiciones.indexOf('false') != -1){
+    return false;
+  }
+
+  return true;
+}

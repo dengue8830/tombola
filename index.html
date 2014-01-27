@@ -63,7 +63,7 @@
 	<!-- footer -->
 	<div data-role="footer" data-position="fixed" data-theme="b">
 		<fieldset class="ui-grid-b">
-   			<div class="ui-block-a" align="left"><a href="#" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc" id="restar_dia" onclick="controller_mostrarSorteos_modificarFecha('menos');"></a></div>
+   			<div class="ui-block-a" align="left"><a href="#" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc" id="btn_restar_dia" onclick="controller_mostrarSorteos_modificarFecha('menos');"></a></div>
     		<div class="ui-block-b">
 
 				<!-- El href tiene que estar dentro de un table para funcionar... nose porque -->
@@ -99,7 +99,7 @@
 				</div>
 
 			</div>
-    		<div class="ui-block-c" align="right"><a href="#" data-role="button" data-icon="arrow-r" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc" id="aumentar_dia" onclick="controller_mostrarSorteos_modificarFecha('mas');"></a></div>
+    		<div class="ui-block-c" align="right"><a href="#" data-role="button" data-icon="arrow-r" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc" id="btn_aumentar_dia" onclick="controller_mostrarSorteos_modificarFecha('mas');"></a></div>
 		</fieldset>
 
 	</div>
@@ -210,6 +210,7 @@
 	var db = window.openDatabase("TombolaBD", "1.0", "TombolaBD", 200000);
 
 	var fechaNavegacion = new Date();
+	var fechaHoy = new Date();
 	//$('#calendario').text(fechaUtils_format(fecha, '/,dd-mm-yyyy'));
 
 	var arrayDivsTablas = new Array();

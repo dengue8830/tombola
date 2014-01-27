@@ -154,6 +154,10 @@ function controller_mostrarSorteos_modificarFecha(nuevaFecha){
 		fechaNavegacion = nuevaFecha;
 	}else{
 		if(nuevaFecha == 'mas'){
+
+			if(fechaUtils_compararFechasByCampos(fechaNavegacion, fechaHoy, 'd-m-y'))
+				return false;
+
 			fechaNavegacion.setDate(fechaNavegacion.getDate()+1);
 		}else{
 			fechaNavegacion.setDate(fechaNavegacion.getDate()-1);
