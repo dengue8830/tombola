@@ -26,6 +26,13 @@
 	background-image:      -o-linear-gradient( #3c3c3c /*{a-bar-background-start}*/, #111 /*{a-bar-background-end}*/); /* Opera 11.10+ */
 	background-image:         linear-gradient( #3c3c3c /*{a-bar-background-start}*/, #111 /*{a-bar-background-end}*/);
 }
+.ui-icon-tombola-calendario {
+	background-image: url(images/icons-png/calendar-black.png);
+	
+	/* background-image: url(images/icons-36-white.png);  */
+	/*background-image: url(http://code.jquery.com/mobile/1.3.2/images/icons-36-white.png);*/
+}
+
 .ui-bar-a,
 .ui-bar-a input,
 .ui-bar-a select,
