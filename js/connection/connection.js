@@ -70,7 +70,7 @@ function connection_createTables(callbackOk, callbackError) {
   ejecutar(insert_cabala_flores_sql);
   ejecutar(insert_cabala_animales_sql);*/
 
-  ejecutar(createtable_sorteos_sql);
+  ejecutar(createtable_sorteos_sql, controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_error);
   //ejecutar(createtable_contador_sql);
 /*  ejecutar(insert_sorteos_1_sql);
   ejecutar(insert_sorteos_2_sql);
@@ -82,7 +82,8 @@ function connection_createTables(callbackOk, callbackError) {
   ejecutar(insert_sorteos_8_sql);*/
 
 
-  controller_mostrarSorteos_modificarFecha(fechaNavegacion);
+  //controller_mostrarSorteos_modificarFecha(fechaNavegacion);
+
   //contadorDAO_getContador();
 }
 
