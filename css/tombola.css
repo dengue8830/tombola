@@ -1,0 +1,23 @@
+#calendario .ui-icon-custom {
+    background-image: url("images/icons-png/calendar-black.png");
+    background-position: 3px 3px;
+    background-size: 80%;
+}
+
+#heart .ui-icon-custom {
+	background-image: url("images/icons-png/heart-white.png");
+	background-position: 3px 3px;
+    background-size: 70%;
+}
+
+#agencia .ui-icon-custom {
+	background-image: url("images/icons-png/tag-white.png");
+	background-position: 3px 3px;
+    background-size: 70%;
+}
+
+#premio .ui-icon-custom {
+	background-image: url("images/icons-png/24-gift.png");
+	background-position: 3px 3px;
+    background-size: 70%;
+}
