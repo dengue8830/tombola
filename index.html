@@ -255,8 +255,10 @@
 	arrayDivsTablas.push($('#tablas_3'));
 	arrayDivsTablas.push($('#tablas_4'));
 // ejecutar('drop table sorteos');
- localStorage.clear();
-	connection_cargarBD(controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_createTables);
+	//El localStorage no se deberia limpiar
+ 	localStorage.clear();
+	//connection_cargarBD(controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_createTables);
+	connection_createTables();
 //controller_mostrarSorteos_modificarFecha(fecha);
 	//getDataHTML();
 	
