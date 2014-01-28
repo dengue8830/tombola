@@ -71,6 +71,11 @@ function sorteoDao_getByFecha_offline(fecha, callBackOk, callbackError){
 
 function sorteoDao_getByFecha_online(fecha, callBackOk, callbackError){
   console.log('intentando online...');
+
+/*  $('#div_msj').show();
+                console.log('error en el online...');
+                sorteoDao_getByFecha_offline(fecha);*/
+
   $.ajax({ 
             url: URL,
             type:'POST', 
@@ -81,7 +86,7 @@ function sorteoDao_getByFecha_online(fecha, callBackOk, callbackError){
                 console.log('error en el online...');
                 sorteoDao_getByFecha_offline(fecha);
               }, 
-            timeout:60000, 
+            timeout:4000, 
             success: function (data){
                 //callBackOk.pop()(data, callBackOk, callbackError);
                 console.log('logrado online');

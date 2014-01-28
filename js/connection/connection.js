@@ -60,30 +60,17 @@ var insert_detalle_cabala_sql = 'INSERT OR REPLACE INTO detalle_cabala (id_detal
 
 function connection_createTables(callbackOk, callbackError) { 
 
-	/*ejecutar(createtable_cabalas_sql);
-	ejecutar(createtable_detalle_cabala_sql);
-	ejecutar(insert_cabala_suenios_sql);
-	ejecutar(insert_cabala_fechas_sql);
-	ejecutar(insert_cabala_nombres_sql);
-  ejecutar(insert_cabala_oficios_sql);
-  ejecutar(insert_cabala_sensaciones_sql);
-  ejecutar(insert_cabala_flores_sql);
-  ejecutar(insert_cabala_animales_sql);*/
 
-  ejecutar(createtable_sorteos_sql);
-  //ejecutar(createtable_contador_sql);
-/*  ejecutar(insert_sorteos_1_sql);
-  ejecutar(insert_sorteos_2_sql);
-  ejecutar(insert_sorteos_3_sql);
-  ejecutar(insert_sorteos_4_sql);
-  ejecutar(insert_sorteos_5_sql);
-  ejecutar(insert_sorteos_6_sql);
-  ejecutar(insert_sorteos_7_sql);
-  ejecutar(insert_sorteos_8_sql);*/
+  ejecutar(createtable_sorteos_sql, controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_error);
 
-
-  controller_mostrarSorteos_modificarFecha(fechaNavegacion);
-  //contadorDAO_getContador();
+  /*db.transaction(function(tx) {
+        tx.executeSql(createtable_sorteos_sql,
+          [], function(tx, result){
+            controller_mostrarSorteos_modificarFecha(fechaNavegacion);
+          }, function(tx, error){
+            alert(error.message);
+          });
+    });*/
 }
 
 function ejecutar(sql, callBackOk, callBackError){
