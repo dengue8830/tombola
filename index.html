@@ -362,6 +362,13 @@
 <script type="text/javascript">
 	configurarCalendario();
 
+/*	$( document ).on( "mobileinit", function() {
+  $.mobile.loader.prototype.options.text = "loading";
+  $.mobile.loader.prototype.options.textVisible = true;
+  $.mobile.loader.prototype.options.theme = "e";
+  
+});*/
+
 	var ONLINE = true;
 	var URL = 'http://192.168.0.103/appPhoneServer/reply.php';
 
@@ -377,30 +384,39 @@
 	arrayDivsTablas.push($('#tablas_3'));
 	arrayDivsTablas.push($('#tablas_4'));
 // ejecutar('drop table sorteos');
-	//El localStorage no se deberia limpiar
+	//El localStorage no se deberia limpiar, ahora queda asi solo para pruebas
  	localStorage.clear();
 	//connection_cargarBD(controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_createTables);
+	connection_cargarBD(function(){controller_mostrarSorteos_modificarFecha(fechaNavegacion);}, connection_createTables);
 
 	/*ejecutar(createtable_sorteos_sql, function(){
 		controller_mostrarSorteos_modificarFecha(fechaNavegacion);
 	}, connection_error);*/
-	ejecutar(createtable_sorteos_sql, controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_error);
+	/*ejecutar(createtable_sorteos_sql, controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_error);*/
+	//controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion)();
 
-	//connection_createTables();
-
-	/*db.transaction(function(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS sorteos (id_sorteo INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, num INTEGER, fecha TEXT, lugar TEXT, numeros TEXT)',
-          [], function(tx, result){
-            controller_mostrarSorteos_modificarFecha(fechaNavegacion);
-          }, function(tx, error){
-            alert(error.message);
-          });
-    });*/
 
 //controller_mostrarSorteos_modificarFecha(fecha);
 	//getDataHTML();
 	
 	//cargarSuenios();
+
+	function loader(visibilidad){
+
+		if(visibilidad == 'show'){
+			setTimeout(function () {
+        		$.mobile.loading('show', {
+            		text: "Espere por favor...",
+            		textVisible: false,
+            		theme: "a"
+        		});
+    		}, 100);
+		}else{
+			setTimeout(function () {
+        		$.mobile.loading('hide');
+    		}, 100);
+		}
+	}
 
 	function configurarCalendario(){
 		jQuery.extend(jQuery.mobile.datebox.prototype.options.lang, {

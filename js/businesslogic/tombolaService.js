@@ -34,6 +34,8 @@ function tombolaService_getSorteosDiezDias(fechaSorteo){
 
 function tombolaService_getSorteosByFecha(fechaSorteo, callBackOk, callbackError){
 console.log('hay '+tombolaService_getCantidadSorteosByFecha(fechaSorteo)+' sorteos en local para esta fechaNavegacion y deberian haber: '+tombolaService_getCantidadEsperadaDeSorteosSegunHora(fechaSorteo));
+	$.mobile.loading('show');
+
 	if(tombolaService_getCantidadSorteosByFecha(fechaSorteo)
 	 == tombolaService_getCantidadEsperadaDeSorteosSegunHora(fechaSorteo)){
 		//callBackOk.push(prepararSorteos);
@@ -91,6 +93,7 @@ function tombolaService_getCantidadEsperadaDeSorteosSegunHora(fechaSorteo){
 }
 
 function tombola_service_prepararSorteos(data, callBackOk, callbackError){
+	$.mobile.loading('hide');
     var sorteos = new Array();
 
 	$.each(data, function( i, item ) {
