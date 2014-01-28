@@ -163,7 +163,7 @@ function controller_mostrarSorteos_modificarFecha(nuevaFecha){
 			fechaNavegacion.setDate(fechaNavegacion.getDate()-1);
 		}
 	}
-
+//alert($('#calendario').find('.ui-btn-text'));
 	//$('#calendario').text(fechaUtils_format(fechaNavegacion, '/,dd-mm-yyyy'));
 	$('#calendario').find('.ui-btn-text').text(fechaUtils_format(fechaNavegacion, '/,dd-mm-yyyy'));
 	//$('#calendario').find('.ui-btn-text').append('<img title="calendario" src="/tombola_repo/css/images/icons-png/calendar-black.png"  border="0">');
