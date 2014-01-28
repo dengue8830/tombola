@@ -380,10 +380,12 @@
 	//El localStorage no se deberia limpiar
  	localStorage.clear();
 	//connection_cargarBD(controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_createTables);
+
 	/*ejecutar(createtable_sorteos_sql, function(){
 		controller_mostrarSorteos_modificarFecha(fechaNavegacion);
 	}, connection_error);*/
-	ejecutarer(createtable_sorteos_sql, controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_error);
+	ejecutar(createtable_sorteos_sql, controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_error);
+
 	//connection_createTables();
 
 	/*db.transaction(function(tx) {
