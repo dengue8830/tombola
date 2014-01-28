@@ -21,18 +21,18 @@
 <body>
 <!-- page -->
 <div data-role="page" data-theme="b" id="page">
-	<div data-role="panel" id="defaultpanel" data-theme="a">
 
-        <ul data-role="listview" data-theme="a" class="nav-search">
+	<div data-role="panel" id="defaultpanel" data-position="left" data-display="reveal" data-theme="a">
+        <ul data-role="listview" data-theme="a"  data-divider-theme="b" class="nav-search">
             <!-- <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li> -->
+            	<li data-role="list-divider">Menu</li>
+            	<li data-icon="home" id="home" data-rel="close"><a href="#page">Sorteos</a></li>
                 <li data-icon="custom" id="heart"><a href="#pageSuenios">Cabalas</a></li>
-                <li data-icon="custom" id="agencia" ><a href="#page" >Agencias Autorizadas</a></li>
-                <li data-icon="custom" id="premio"><a href="#page">Liquidacion Premios</a></li>
-                <li data-icon="alert"><a href="#page" >Juego Responsable</a></li>
+                <li data-icon="custom" id="agencia" ><a href="#pageAgencias" >Agencias Autorizadas</a></li>
+                <li data-icon="custom" id="premio"><a href="#pagePremios">Liquidacion Premios</a></li>
+                <li data-icon="alert"><a href="#pageJuego" >Juego Responsable</a></li>
                 <li data-icon="info"><a href="#pageInfo" >Informacion General</a></li>
-                               
-		</ul>
-
+   		</ul>
 	</div><!-- /default panel -->
 
 
@@ -122,15 +122,27 @@
 	</div>
 </div>
 
-
+<!-- Pagina de Cabalaas -->
 <div data-role="page" data-theme="b" id="pageSuenios">
+	
+	<div data-role="panel" id="defaultpanel" data-position="left" data-display="reveal" data-theme="a">
+        <ul data-role="listview" data-theme="a"  data-divider-theme="b" class="nav-search">
+            <!-- <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li> -->
+            	<li data-role="list-divider">Menu</li>
+            	<li data-icon="home" id="home" ><a href="#page">Sorteos</a></li>
+                <li data-icon="custom" id="heart" data-rel="close"><a href="#pageSuenios">Cabalas</a></li>
+                <li data-icon="custom" id="agencia" ><a href="#pageAgencias" >Agencias Autorizadas</a></li>
+                <li data-icon="custom" id="premio"><a href="#pagePremios">Liquidacion Premios</a></li>
+                <li data-icon="alert"><a href="#pageJuego" >Juego Responsable</a></li>
+                <li data-icon="info"><a href="#pageInfo" >Informacion General</a></li>
+   		</ul>
+	</div><!-- /default panel -->
+
 	<!-- cabecera -->
 	<div data-role="header" data-theme="b" >
 		<h3>Significados</h3>
-
-		<a href="#page" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc" data-transition="fade" data-direction="reverse"></a>
-	
-				
+		<a href="#defaultpanel" data-icon="bars" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc"  data-transition="fade" data-direction="reverse">info</a>
+		<a href="#page" data-role="button" data-icon="custom" id="anterior" data-rel="back" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-nodisc" data-transition="fade"></a>
 				
 	</div>
 	<!-- content -->
@@ -189,14 +201,26 @@
 
 <!-- page de Informacion -->
 <div data-role="page" id="pageInfo">
+
+	<div data-role="panel" id="defaultpanel" data-position="left" data-display="reveal" data-theme="a">
+        <ul data-role="listview" data-theme="a"  data-divider-theme="b" class="nav-search">
+            <!-- <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li> -->
+            	<li data-role="list-divider">Menu</li>
+            	<li data-icon="home" id="home" ><a href="#page">Sorteos</a></li>
+                <li data-icon="custom" id="heart"><a href="#pageSuenios">Cabalas</a></li>
+                <li data-icon="custom" id="agencia" ><a href="#pageAgencias" >Agencias Autorizadas</a></li>
+                <li data-icon="custom" id="premio"><a href="#pagePremios">Liquidacion Premios</a></li>
+                <li data-icon="alert"><a href="#pageJuego" >Juego Responsable</a></li>
+                <li data-icon="info"><a href="#pageInfo" data-rel="close" >Informacion General</a></li>
+   		</ul>
+	</div><!-- /default panel -->
+
 	<!-- cabecera -->
 	<div data-role="header" data-theme="b" >
 		<h3>Información</h3>
-
-		<a href="#page" data-role="button" data-icon="home" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-btn-right ui-icon-alt ui-icon-nodisc" data-transition="fade"></a>
+		<a href="#defaultpanel" data-icon="bars" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc"  data-transition="fade" data-direction="reverse">info</a>
+		<a href="#page" data-role="button" data-icon="custom" id="anterior" data-rel="back" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-nodisc" data-transition="fade"></a>
 	
-				
-				
 	</div>
 	<!-- content -->
 	<div data-role="content">
@@ -229,6 +253,104 @@
 	</div>
 </div>
 
+<!-- page de Agencias Autorizadas -->
+<div data-role="page" id="pageAgencias">
+
+	<div data-role="panel" id="defaultpanel" data-position="left" data-display="reveal" data-theme="a">
+        <ul data-role="listview" data-theme="a"  data-divider-theme="b" class="nav-search">
+            <!-- <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li> -->
+            	<li data-role="list-divider">Menu</li>
+            	<li data-icon="home" id="home" ><a href="#page">Sorteos</a></li>
+                <li data-icon="custom" id="heart"><a href="#pageSuenios">Cabalas</a></li>
+                <li data-icon="custom" id="agencia" data-rel="close"><a href="#pageAgencias" >Agencias Autorizadas</a></li>
+                <li data-icon="custom" id="premio"><a href="#pagePremios">Liquidacion Premios</a></li>
+                <li data-icon="alert"><a href="#pageJuego" >Juego Responsable</a></li>
+                <li data-icon="info"><a href="#pageInfo" >Informacion General</a></li>
+   		</ul>
+	</div><!-- /default panel -->
+
+	<!-- cabecera -->
+	<div data-role="header" data-theme="b" >
+		<h3>Agencias Utorizadas</h3>
+		<a href="#defaultpanel" data-icon="bars" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc"  data-transition="fade" data-direction="reverse">info</a>
+		<a href="#page" data-role="button" data-icon="custom" id="anterior" data-rel="back" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-nodisc" data-transition="fade"></a>	
+	</div>
+	<!-- content -->
+	<div data-role="content">
+	
+	</div>
+	<!-- footer -->
+	<div data-role="footer" data-theme="b" data-position="fixed" >
+			<div class="ui-block-a" align="center"> Banco de Accion Social </div>
+	</div>
+</div>
+
+<!-- page de Liquidacion Premios -->
+<div data-role="page" id="pagePremios">
+
+	<div data-role="panel" id="defaultpanel" data-position="left" data-display="reveal" data-theme="a">
+        <ul data-role="listview" data-theme="a"  data-divider-theme="b" class="nav-search">
+            <!-- <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li> -->
+            	<li data-role="list-divider">Menu</li>
+            	<li data-icon="home" id="home" ><a href="#page">Sorteos</a></li>
+                <li data-icon="custom" id="heart"><a href="#pageSuenios">Cabalas</a></li>
+                <li data-icon="custom" id="agencia"><a href="#pageAgencias" >Agencias Autorizadas</a></li>
+                <li data-icon="custom" id="premio" data-rel="close"><a href="#pagePremios">Liquidacion Premios</a></li>
+                <li data-icon="alert"><a href="#pageJuego" >Juego Responsable</a></li>
+                <li data-icon="info"><a href="#pageInfo" >Informacion General</a></li>
+   		</ul>
+	</div><!-- /default panel -->
+
+	<!-- cabecera -->
+	<div data-role="header" data-theme="b" >
+		<h3>Liquidacion Premios</h3>
+		<a href="#defaultpanel" data-icon="bars" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc"  data-transition="fade" data-direction="reverse">info</a>
+		<a href="#page" data-role="button" data-icon="custom" id="anterior" data-rel="back" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-nodisc" data-transition="fade"></a>
+	
+	</div>
+	<!-- content -->
+	<div data-role="content">
+	
+	</div>
+	<!-- footer -->
+	<div data-role="footer" data-theme="b" data-position="fixed" >
+			<div class="ui-block-a" align="center"> Banco de Accion Social </div>
+	</div>
+</div>
+
+
+
+<!-- page de Juego Responsable -->
+<div data-role="page" id="pageJuego">
+
+	<div data-role="panel" id="defaultpanel" data-position="left" data-display="reveal" data-theme="a">
+        <ul data-role="listview" data-theme="a"  data-divider-theme="b" class="nav-search">
+            <!-- <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li> -->
+            	<li data-role="list-divider">Menu</li>
+            	<li data-icon="home" id="home" ><a href="#page">Sorteos</a></li>
+                <li data-icon="custom" id="heart"><a href="#pageSuenios">Cabalas</a></li>
+                <li data-icon="custom" id="agencia"><a href="#pageAgencias" >Agencias Autorizadas</a></li>
+                <li data-icon="custom" id="premio" ><a href="#pagePremios">Liquidacion Premios</a></li>
+                <li data-icon="alert"><a href="#pageJuego"  data-rel="close">Juego Responsable</a></li>
+                <li data-icon="info"><a href="#pageInfo" >Informacion General</a></li>
+   		</ul>
+	</div><!-- /default panel -->
+
+	<!-- cabecera -->
+	<div data-role="header" data-theme="b" >
+		<h3>JUego Responsable</h3>
+		<a href="#defaultpanel" data-icon="bars" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-alt ui-icon-nodisc"  data-transition="fade" data-direction="reverse">info</a>
+		<a href="#page" data-role="button" data-icon="custom" id="anterior" data-rel="back" data-iconpos="notext" data-iconshadow="false" data-theme="d" class="ui-icon-nodisc" data-transition="fade"></a>
+   	</div>
+	<!-- content -->
+	<div data-role="content">
+	
+	</div>
+	<!-- footer -->
+	<div data-role="footer" data-theme="b" data-position="fixed" >
+			<div class="ui-block-a" align="center"> Banco de Accion Social </div>
+	</div>
+</div>
 
 
 <script src="js/utils/utils.js"></script>
