@@ -257,18 +257,18 @@
 // ejecutar('drop table sorteos');
 	//El localStorage no se deberia limpiar
  	localStorage.clear();
-	//connection_cargarBD(controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_createTables);
+	connection_cargarBD(controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_createTables);
 	//connection_createTables();
 
-	db.transaction(function(tx) {
+	/*db.transaction(function(tx) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS sorteos (id_sorteo INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, num INTEGER, fecha TEXT, lugar TEXT, numeros TEXT)',
           [], function(tx, result){
             controller_mostrarSorteos_modificarFecha(fechaNavegacion);
           }, function(tx, error){
             alert(error.message);
           });
-    });
-    
+    });*/
+
 //controller_mostrarSorteos_modificarFecha(fecha);
 	//getDataHTML();
 	

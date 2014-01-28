@@ -61,16 +61,16 @@ var insert_detalle_cabala_sql = 'INSERT OR REPLACE INTO detalle_cabala (id_detal
 function connection_createTables(callbackOk, callbackError) { 
 
 
-  //ejecutar(createtable_sorteos_sql, controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_error);
+  ejecutar(createtable_sorteos_sql, controller_mostrarSorteos_modificarFecha.bind(null, fechaNavegacion), connection_error);
 
-  db.transaction(function(tx) {
+  /*db.transaction(function(tx) {
         tx.executeSql(createtable_sorteos_sql,
           [], function(tx, result){
             controller_mostrarSorteos_modificarFecha(fechaNavegacion);
           }, function(tx, error){
             alert(error.message);
           });
-    });
+    });*/
 }
 
 function ejecutar(sql, callBackOk, callBackError){
