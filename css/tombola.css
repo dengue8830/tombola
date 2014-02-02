@@ -26,4 +26,12 @@
 	background-position: 3px 3px;
     background-size: 70%;
 }
-
+/* style para aliniear burbujas*/
+.ui-page .ui-content .ui-listview .ui-li-count {
+            left  : 10px;
+            right : auto;
+}
+.ui-page .ui-content .ui-listview .ui-li {
+          text-align: center;
+}
+/* ------------------------ */
